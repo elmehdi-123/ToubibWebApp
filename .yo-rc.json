@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.zennaki.toubibrdv",
+      "nativeLanguage": "ar-ly"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "ToubibRDVWebApp",
+    "packageName": "com.zennaki.toubibrdv",
+    "packageFolder": "com/zennaki/toubibrdv",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZDFmM2I2MjBhNjlhMjFjYTViNThkYjJlNWEyMzc4MGRlNGYxYmMxY2U3N2M3YTAyMGM4MmI3OWM3NjU3ZDIwODJmOTI0YWE3MDcyNzBlZWUzNDZlZWMyYmVkYWU0MmM4YTMxMjQ5YmVmYjgzZDAyNjExNzExZGZiMjI3MmNkY2U=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1591565992525,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "ar-ly",
+    "languages": ["ar-ly", "en", "fr"],
+    "blueprints": []
+  }
+}
