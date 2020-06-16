@@ -1,0 +1,9 @@
+{
+  "toubibRdvWebApp": {
+    "DocteurOrPatientEnum": {
+      "null": "",
+      "DOCTEUR": "DOCTEUR",
+      "PATIENT": "PATIENT"
+    }
+  }
+}

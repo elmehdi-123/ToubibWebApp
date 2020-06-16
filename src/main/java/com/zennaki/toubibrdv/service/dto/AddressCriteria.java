@@ -36,6 +36,8 @@ public class AddressCriteria implements Serializable, Criteria {
 
     private StringFilter willaya;
 
+    private LongFilter personId;
+
     public AddressCriteria() {
     }
 
@@ -46,6 +48,7 @@ public class AddressCriteria implements Serializable, Criteria {
         this.commun = other.commun == null ? null : other.commun.copy();
         this.codePostal = other.codePostal == null ? null : other.codePostal.copy();
         this.willaya = other.willaya == null ? null : other.willaya.copy();
+        this.personId = other.personId == null ? null : other.personId.copy();
     }
 
     @Override
@@ -101,6 +104,14 @@ public class AddressCriteria implements Serializable, Criteria {
         this.willaya = willaya;
     }
 
+    public LongFilter getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(LongFilter personId) {
+        this.personId = personId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -117,7 +128,8 @@ public class AddressCriteria implements Serializable, Criteria {
             Objects.equals(ville, that.ville) &&
             Objects.equals(commun, that.commun) &&
             Objects.equals(codePostal, that.codePostal) &&
-            Objects.equals(willaya, that.willaya);
+            Objects.equals(willaya, that.willaya) &&
+            Objects.equals(personId, that.personId);
     }
 
     @Override
@@ -128,7 +140,8 @@ public class AddressCriteria implements Serializable, Criteria {
         ville,
         commun,
         codePostal,
-        willaya
+        willaya,
+        personId
         );
     }
 
@@ -141,6 +154,7 @@ public class AddressCriteria implements Serializable, Criteria {
                 (commun != null ? "commun=" + commun + ", " : "") +
                 (codePostal != null ? "codePostal=" + codePostal + ", " : "") +
                 (willaya != null ? "willaya=" + willaya + ", " : "") +
+                (personId != null ? "personId=" + personId + ", " : "") +
             "}";
     }
 

@@ -40,6 +40,14 @@
                     <input type="text" class="form-control" name="willaya" id="field_willaya"
                            formControlName="willaya"/>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.person" for="field_person">Person</label>
+                    <select class="form-control" id="field_person" name="person" formControlName="personId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personOption.id" *ngFor="let personOption of people; trackBy: trackById">{{ personOption.id }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

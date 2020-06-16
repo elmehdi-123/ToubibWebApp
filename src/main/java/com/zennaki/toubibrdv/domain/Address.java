@@ -1,5 +1,6 @@
 package com.zennaki.toubibrdv.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -33,6 +34,10 @@ public class Address implements Serializable {
 
     @Column(name = "willaya")
     private String willaya;
+
+    @ManyToOne
+    @JsonIgnoreProperties("addresses")
+    private Person person;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -106,6 +111,19 @@ public class Address implements Serializable {
 
     public void setWillaya(String willaya) {
         this.willaya = willaya;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public Address person(Person person) {
+        this.person = person;
+        return this;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

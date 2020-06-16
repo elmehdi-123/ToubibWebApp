@@ -5,6 +5,7 @@ export interface IAddress {
   commun?: string;
   codePostal?: string;
   willaya?: string;
+  personId?: number;
 }
 
 export class Address implements IAddress {
@@ -14,6 +15,7 @@ export class Address implements IAddress {
     public ville?: string,
     public commun?: string,
     public codePostal?: string,
-    public willaya?: string
+    public willaya?: string,
+    public personId?: number
   ) {}
 }

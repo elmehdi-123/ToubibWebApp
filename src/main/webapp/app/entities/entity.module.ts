@@ -7,6 +7,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'address',
         loadChildren: () => import('./address/address.module').then(m => m.ToubibRdvWebAppAddressModule)
+      },
+      {
+        path: 'person',
+        loadChildren: () => import('./person/person.module').then(m => m.ToubibRdvWebAppPersonModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

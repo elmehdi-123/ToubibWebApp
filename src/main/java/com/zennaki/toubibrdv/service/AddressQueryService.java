@@ -106,6 +106,10 @@ public class AddressQueryService extends QueryService<Address> {
             if (criteria.getWillaya() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getWillaya(), Address_.willaya));
             }
+            if (criteria.getPersonId() != null) {
+                specification = specification.and(buildSpecification(criteria.getPersonId(),
+                    root -> root.join(Address_.person, JoinType.LEFT).get(Person_.id)));
+            }
         }
         return specification;
     }

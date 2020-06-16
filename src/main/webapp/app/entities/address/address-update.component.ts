@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 
 import { IAddress, Address } from 'app/shared/model/address.model';
 import { AddressService } from './address.service';
+import { IPerson } from 'app/shared/model/person.model';
+import { PersonService } from 'app/entities/person/person.service';
 
 @Component({
   selector: 'jhi-address-update',
@@ -14,6 +16,7 @@ import { AddressService } from './address.service';
 })
 export class AddressUpdateComponent implements OnInit {
   isSaving = false;
+  people: IPerson[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -21,14 +24,22 @@ export class AddressUpdateComponent implements OnInit {
     ville: [],
     commun: [],
     codePostal: [],
-    willaya: []
+    willaya: [],
+    personId: []
   });
 
-  constructor(protected addressService: AddressService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
+  constructor(
+    protected addressService: AddressService,
+    protected personService: PersonService,
+    protected activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ address }) => {
       this.updateForm(address);
+
+      this.personService.query().subscribe((res: HttpResponse<IPerson[]>) => (this.people = res.body || []));
     });
   }
 
@@ -39,7 +50,8 @@ export class AddressUpdateComponent implements OnInit {
       ville: address.ville,
       commun: address.commun,
       codePostal: address.codePostal,
-      willaya: address.willaya
+      willaya: address.willaya,
+      personId: address.personId
     });
   }
 
@@ -65,7 +77,8 @@ export class AddressUpdateComponent implements OnInit {
       ville: this.editForm.get(['ville'])!.value,
       commun: this.editForm.get(['commun'])!.value,
       codePostal: this.editForm.get(['codePostal'])!.value,
-      willaya: this.editForm.get(['willaya'])!.value
+      willaya: this.editForm.get(['willaya'])!.value,
+      personId: this.editForm.get(['personId'])!.value
     };
   }
 
@@ -83,5 +96,9 @@ export class AddressUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IPerson): any {
+    return item.id;
   }
 }

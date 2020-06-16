@@ -20,6 +20,8 @@ public class AddressDTO implements Serializable {
 
     private String willaya;
 
+
+    private Long personId;
     
     public Long getId() {
         return id;
@@ -69,6 +71,14 @@ public class AddressDTO implements Serializable {
         this.willaya = willaya;
     }
 
+    public Long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Long personId) {
+        this.personId = personId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -99,6 +109,7 @@ public class AddressDTO implements Serializable {
             ", commun='" + getCommun() + "'" +
             ", codePostal='" + getCodePostal() + "'" +
             ", willaya='" + getWillaya() + "'" +
+            ", personId=" + getPersonId() +
             "}";
     }
 }

@@ -1,0 +1,84 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-person-heading" jhiTranslate="toubibRdvWebApp.person.home.createOrEditLabel">Create or edit a Person</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.nom" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           formControlName="nom"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.prenom" for="field_prenom">Prenom</label>
+                    <input type="text" class="form-control" name="prenom" id="field_prenom"
+                           formControlName="prenom"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.numTele" for="field_numTele">Num Tele</label>
+                    <input type="text" class="form-control" name="numTele" id="field_numTele"
+                           formControlName="numTele"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.eMail" for="field_eMail">E Mail</label>
+                    <input type="text" class="form-control" name="eMail" id="field_eMail"
+                           formControlName="eMail"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.dateDeNaissance" for="field_dateDeNaissance">Date De Naissance</label>
+                    <div class="input-group">
+                        <input id="field_dateDeNaissance" type="text" class="form-control" name="dateDeNaissance" ngbDatepicker #dateDeNaissanceDp="ngbDatepicker" formControlName="dateDeNaissance"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDeNaissanceDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.civilite" for="field_civilite">Civilite</label>
+                    <select class="form-control" name="civilite" formControlName="civilite" id="field_civilite">
+                        <option value="MADAME">{{ 'toubibRdvWebApp.TypeCivilite.MADAME' | translate }}</option>
+                        <option value="MONSIEUR">{{ 'toubibRdvWebApp.TypeCivilite.MONSIEUR' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.docteurOrPatient" for="field_docteurOrPatient">Docteur Or Patient</label>
+                    <select class="form-control" name="docteurOrPatient" formControlName="docteurOrPatient" id="field_docteurOrPatient">
+                        <option value="DOCTEUR">{{ 'toubibRdvWebApp.DocteurOrPatientEnum.DOCTEUR' | translate }}</option>
+                        <option value="PATIENT">{{ 'toubibRdvWebApp.DocteurOrPatientEnum.PATIENT' | translate }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.login }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

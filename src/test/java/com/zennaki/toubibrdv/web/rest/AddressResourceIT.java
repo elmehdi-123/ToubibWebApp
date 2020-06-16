@@ -2,6 +2,7 @@ package com.zennaki.toubibrdv.web.rest;
 
 import com.zennaki.toubibrdv.ToubibRdvWebApp;
 import com.zennaki.toubibrdv.domain.Address;
+import com.zennaki.toubibrdv.domain.Person;
 import com.zennaki.toubibrdv.repository.AddressRepository;
 import com.zennaki.toubibrdv.service.AddressService;
 import com.zennaki.toubibrdv.service.dto.AddressDTO;
@@ -593,6 +594,26 @@ public class AddressResourceIT {
 
         // Get all the addressList where willaya does not contain UPDATED_WILLAYA
         defaultAddressShouldBeFound("willaya.doesNotContain=" + UPDATED_WILLAYA);
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllAddressesByPersonIsEqualToSomething() throws Exception {
+        // Initialize the database
+        addressRepository.saveAndFlush(address);
+        Person person = PersonResourceIT.createEntity(em);
+        em.persist(person);
+        em.flush();
+        address.setPerson(person);
+        addressRepository.saveAndFlush(address);
+        Long personId = person.getId();
+
+        // Get all the addressList where person equals to personId
+        defaultAddressShouldBeFound("personId.equals=" + personId);
+
+        // Get all the addressList where person equals to personId + 1
+        defaultAddressShouldNotBeFound("personId.equals=" + (personId + 1));
     }
 
     /**

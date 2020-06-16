@@ -28,6 +28,7 @@
                     <th scope="col"  jhiSortBy="commun"><span jhiTranslate="toubibRdvWebApp.address.commun">Commun</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="codePostal"><span jhiTranslate="toubibRdvWebApp.address.codePostal">Code Postal</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="willaya"><span jhiTranslate="toubibRdvWebApp.address.willaya">Willaya</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="personId"><span jhiTranslate="toubibRdvWebApp.address.person">Person</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -39,6 +40,11 @@
                     <td>{{ address.commun }}</td>
                     <td>{{ address.codePostal }}</td>
                     <td>{{ address.willaya }}</td>
+                    <td>
+                        <div *ngIf="address.personId">
+                            <a [routerLink]="['/person', address.personId , 'view']" >{{ address.personId }}</a>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

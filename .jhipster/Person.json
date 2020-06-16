@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "person"
+        },
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "useJPADerivedIdentifier": true,
+            "otherEntityRelationshipName": "person"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "prenom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numTele",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "eMail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateDeNaissance",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "civilite",
+            "fieldType": "TypeCivilite",
+            "fieldValues": "MADAME,MONSIEUR"
+        },
+        {
+            "fieldName": "docteurOrPatient",
+            "fieldType": "DocteurOrPatientEnum",
+            "fieldValues": "DOCTEUR,PATIENT"
+        }
+    ],
+    "changelogDate": "20200616192401",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "person",
+    "databaseType": "sql",
+    "readOnly": false,
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination"
+}

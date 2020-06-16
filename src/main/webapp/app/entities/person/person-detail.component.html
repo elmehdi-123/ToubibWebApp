@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="person">
+            <h2><span jhiTranslate="toubibRdvWebApp.person.detail.title">Person</span> {{ person.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="toubibRdvWebApp.person.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ person.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="toubibRdvWebApp.person.prenom">Prenom</span></dt>
+                <dd>
+                    <span>{{ person.prenom }}</span>
+                </dd>
+                <dt><span jhiTranslate="toubibRdvWebApp.person.numTele">Num Tele</span></dt>
+                <dd>
+                    <span>{{ person.numTele }}</span>
+                </dd>
+                <dt><span jhiTranslate="toubibRdvWebApp.person.eMail">E Mail</span></dt>
+                <dd>
+                    <span>{{ person.eMail }}</span>
+                </dd>
+                <dt><span jhiTranslate="toubibRdvWebApp.person.dateDeNaissance">Date De Naissance</span></dt>
+                <dd>
+                    <span>{{ person.dateDeNaissance }}</span>
+                </dd>
+                <dt><span jhiTranslate="toubibRdvWebApp.person.civilite">Civilite</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'toubibRdvWebApp.TypeCivilite.' + person.civilite }}">{{ person.civilite }}</span>
+                </dd>
+                <dt><span jhiTranslate="toubibRdvWebApp.person.docteurOrPatient">Docteur Or Patient</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'toubibRdvWebApp.DocteurOrPatientEnum.' + person.docteurOrPatient }}">{{ person.docteurOrPatient }}</span>
+                </dd>
+                <dt><span jhiTranslate="toubibRdvWebApp.person.user">User</span></dt>
+                <dd>
+                    {{ person.userLogin }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/person', person.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

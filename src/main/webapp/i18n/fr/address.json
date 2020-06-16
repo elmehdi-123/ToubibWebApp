@@ -20,7 +20,8 @@
       "ville": "Ville",
       "commun": "Commun",
       "codePostal": "Code Postal",
-      "willaya": "Willaya"
+      "willaya": "Willaya",
+      "person": "Person"
     }
   }
 }
