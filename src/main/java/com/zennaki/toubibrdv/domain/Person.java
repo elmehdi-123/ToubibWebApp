@@ -63,6 +63,12 @@ public class Person implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "specialty_id", referencedColumnName = "id"))
     private Set<Specialty> specialties = new HashSet<>();
 
+    @OneToMany(mappedBy = "person")
+    private Set<Appointment> appointments = new HashSet<>();
+
+    @OneToMany(mappedBy = "docteur")
+    private Set<Appointment> disponibilties = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -224,6 +230,56 @@ public class Person implements Serializable {
 
     public void setSpecialties(Set<Specialty> specialties) {
         this.specialties = specialties;
+    }
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public Person appointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
+        return this;
+    }
+
+    public Person addAppointment(Appointment appointment) {
+        this.appointments.add(appointment);
+        appointment.setPerson(this);
+        return this;
+    }
+
+    public Person removeAppointment(Appointment appointment) {
+        this.appointments.remove(appointment);
+        appointment.setPerson(null);
+        return this;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public Set<Appointment> getDisponibilties() {
+        return disponibilties;
+    }
+
+    public Person disponibilties(Set<Appointment> appointments) {
+        this.disponibilties = appointments;
+        return this;
+    }
+
+    public Person addDisponibilties(Appointment appointment) {
+        this.disponibilties.add(appointment);
+        appointment.setDocteur(this);
+        return this;
+    }
+
+    public Person removeDisponibilties(Appointment appointment) {
+        this.disponibilties.remove(appointment);
+        appointment.setDocteur(null);
+        return this;
+    }
+
+    public void setDisponibilties(Set<Appointment> appointments) {
+        this.disponibilties = appointments;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

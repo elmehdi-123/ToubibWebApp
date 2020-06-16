@@ -25,7 +25,9 @@
       "docteurOrPatient": "Docteur Or Patient",
       "address": "Address",
       "user": "User",
-      "specialty": "Specialty"
+      "specialty": "Specialty",
+      "appointment": "Appointment",
+      "disponibilties": "Disponibilties"
     }
   }
 }

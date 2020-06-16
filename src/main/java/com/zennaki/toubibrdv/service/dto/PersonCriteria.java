@@ -85,6 +85,10 @@ public class PersonCriteria implements Serializable, Criteria {
 
     private LongFilter specialtyId;
 
+    private LongFilter appointmentId;
+
+    private LongFilter disponibiltiesId;
+
     public PersonCriteria() {
     }
 
@@ -100,6 +104,8 @@ public class PersonCriteria implements Serializable, Criteria {
         this.addressId = other.addressId == null ? null : other.addressId.copy();
         this.userId = other.userId == null ? null : other.userId.copy();
         this.specialtyId = other.specialtyId == null ? null : other.specialtyId.copy();
+        this.appointmentId = other.appointmentId == null ? null : other.appointmentId.copy();
+        this.disponibiltiesId = other.disponibiltiesId == null ? null : other.disponibiltiesId.copy();
     }
 
     @Override
@@ -195,6 +201,22 @@ public class PersonCriteria implements Serializable, Criteria {
         this.specialtyId = specialtyId;
     }
 
+    public LongFilter getAppointmentId() {
+        return appointmentId;
+    }
+
+    public void setAppointmentId(LongFilter appointmentId) {
+        this.appointmentId = appointmentId;
+    }
+
+    public LongFilter getDisponibiltiesId() {
+        return disponibiltiesId;
+    }
+
+    public void setDisponibiltiesId(LongFilter disponibiltiesId) {
+        this.disponibiltiesId = disponibiltiesId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -216,7 +238,9 @@ public class PersonCriteria implements Serializable, Criteria {
             Objects.equals(docteurOrPatient, that.docteurOrPatient) &&
             Objects.equals(addressId, that.addressId) &&
             Objects.equals(userId, that.userId) &&
-            Objects.equals(specialtyId, that.specialtyId);
+            Objects.equals(specialtyId, that.specialtyId) &&
+            Objects.equals(appointmentId, that.appointmentId) &&
+            Objects.equals(disponibiltiesId, that.disponibiltiesId);
     }
 
     @Override
@@ -232,7 +256,9 @@ public class PersonCriteria implements Serializable, Criteria {
         docteurOrPatient,
         addressId,
         userId,
-        specialtyId
+        specialtyId,
+        appointmentId,
+        disponibiltiesId
         );
     }
 
@@ -250,6 +276,8 @@ public class PersonCriteria implements Serializable, Criteria {
                 (addressId != null ? "addressId=" + addressId + ", " : "") +
                 (userId != null ? "userId=" + userId + ", " : "") +
                 (specialtyId != null ? "specialtyId=" + specialtyId + ", " : "") +
+                (appointmentId != null ? "appointmentId=" + appointmentId + ", " : "") +
+                (disponibiltiesId != null ? "disponibiltiesId=" + disponibiltiesId + ", " : "") +
             "}";
     }
 

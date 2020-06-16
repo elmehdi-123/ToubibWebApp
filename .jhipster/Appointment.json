@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "person",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "appointment"
+        },
+        {
+            "relationshipName": "docteur",
+            "otherEntityName": "person",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "appointment"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "motif",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateRdv",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20200616210625",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "appointment",
+    "databaseType": "sql",
+    "readOnly": false,
+    "jpaMetamodelFiltering": true,
+    "pagination": "pagination"
+}

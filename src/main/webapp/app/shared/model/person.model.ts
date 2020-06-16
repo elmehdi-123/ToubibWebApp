@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { IAddress } from 'app/shared/model/address.model';
 import { ISpecialty } from 'app/shared/model/specialty.model';
+import { IAppointment } from 'app/shared/model/appointment.model';
 import { TypeCivilite } from 'app/shared/model/enumerations/type-civilite.model';
 import { DocteurOrPatientEnum } from 'app/shared/model/enumerations/docteur-or-patient-enum.model';
 
@@ -17,6 +18,8 @@ export interface IPerson {
   userLogin?: string;
   userId?: number;
   specialties?: ISpecialty[];
+  appointments?: IAppointment[];
+  disponibilties?: IAppointment[];
 }
 
 export class Person implements IPerson {
@@ -32,6 +35,8 @@ export class Person implements IPerson {
     public addresses?: IAddress[],
     public userLogin?: string,
     public userId?: number,
-    public specialties?: ISpecialty[]
+    public specialties?: ISpecialty[],
+    public appointments?: IAppointment[],
+    public disponibilties?: IAppointment[]
   ) {}
 }

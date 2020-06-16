@@ -20,6 +20,10 @@ public interface PersonMapper extends EntityMapper<PersonDTO, Person> {
     @Mapping(target = "removeAddress", ignore = true)
     @Mapping(source = "userId", target = "user")
     @Mapping(target = "removeSpecialty", ignore = true)
+    @Mapping(target = "appointments", ignore = true)
+    @Mapping(target = "removeAppointment", ignore = true)
+    @Mapping(target = "disponibilties", ignore = true)
+    @Mapping(target = "removeDisponibilties", ignore = true)
     Person toEntity(PersonDTO personDTO);
 
     default Person fromId(Long id) {

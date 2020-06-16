@@ -5,6 +5,7 @@ import com.zennaki.toubibrdv.domain.Person;
 import com.zennaki.toubibrdv.domain.Address;
 import com.zennaki.toubibrdv.domain.User;
 import com.zennaki.toubibrdv.domain.Specialty;
+import com.zennaki.toubibrdv.domain.Appointment;
 import com.zennaki.toubibrdv.repository.PersonRepository;
 import com.zennaki.toubibrdv.service.PersonService;
 import com.zennaki.toubibrdv.service.dto.PersonDTO;
@@ -883,6 +884,46 @@ public class PersonResourceIT {
 
         // Get all the personList where specialty equals to specialtyId + 1
         defaultPersonShouldNotBeFound("specialtyId.equals=" + (specialtyId + 1));
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllPeopleByAppointmentIsEqualToSomething() throws Exception {
+        // Initialize the database
+        personRepository.saveAndFlush(person);
+        Appointment appointment = AppointmentResourceIT.createEntity(em);
+        em.persist(appointment);
+        em.flush();
+        person.addAppointment(appointment);
+        personRepository.saveAndFlush(person);
+        Long appointmentId = appointment.getId();
+
+        // Get all the personList where appointment equals to appointmentId
+        defaultPersonShouldBeFound("appointmentId.equals=" + appointmentId);
+
+        // Get all the personList where appointment equals to appointmentId + 1
+        defaultPersonShouldNotBeFound("appointmentId.equals=" + (appointmentId + 1));
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllPeopleByDisponibiltiesIsEqualToSomething() throws Exception {
+        // Initialize the database
+        personRepository.saveAndFlush(person);
+        Appointment disponibilties = AppointmentResourceIT.createEntity(em);
+        em.persist(disponibilties);
+        em.flush();
+        person.addDisponibilties(disponibilties);
+        personRepository.saveAndFlush(person);
+        Long disponibiltiesId = disponibilties.getId();
+
+        // Get all the personList where disponibilties equals to disponibiltiesId
+        defaultPersonShouldBeFound("disponibiltiesId.equals=" + disponibiltiesId);
+
+        // Get all the personList where disponibilties equals to disponibiltiesId + 1
+        defaultPersonShouldNotBeFound("disponibiltiesId.equals=" + (disponibiltiesId + 1));
     }
 
     /**

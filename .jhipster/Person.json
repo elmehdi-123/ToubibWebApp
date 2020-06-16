@@ -24,6 +24,18 @@
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "person"
+        },
+        {
+            "relationshipName": "appointment",
+            "otherEntityName": "appointment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "person"
+        },
+        {
+            "relationshipName": "disponibilties",
+            "otherEntityName": "appointment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "docteur"
         }
     ],
     "fields": [
