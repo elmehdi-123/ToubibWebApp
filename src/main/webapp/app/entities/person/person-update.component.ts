@@ -9,6 +9,10 @@ import { IPerson, Person } from 'app/shared/model/person.model';
 import { PersonService } from './person.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
+import { ISpecialty } from 'app/shared/model/specialty.model';
+import { SpecialtyService } from 'app/entities/specialty/specialty.service';
+
+type SelectableEntity = IUser | ISpecialty;
 
 @Component({
   selector: 'jhi-person-update',
@@ -17,6 +21,7 @@ import { UserService } from 'app/core/user/user.service';
 export class PersonUpdateComponent implements OnInit {
   isSaving = false;
   users: IUser[] = [];
+  specialties: ISpecialty[] = [];
   dateDeNaissanceDp: any;
 
   editForm = this.fb.group({
@@ -28,12 +33,14 @@ export class PersonUpdateComponent implements OnInit {
     dateDeNaissance: [],
     civilite: [],
     docteurOrPatient: [],
-    userId: []
+    userId: [],
+    specialties: []
   });
 
   constructor(
     protected personService: PersonService,
     protected userService: UserService,
+    protected specialtyService: SpecialtyService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -43,6 +50,8 @@ export class PersonUpdateComponent implements OnInit {
       this.updateForm(person);
 
       this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
+
+      this.specialtyService.query().subscribe((res: HttpResponse<ISpecialty[]>) => (this.specialties = res.body || []));
     });
   }
 
@@ -56,7 +65,8 @@ export class PersonUpdateComponent implements OnInit {
       dateDeNaissance: person.dateDeNaissance,
       civilite: person.civilite,
       docteurOrPatient: person.docteurOrPatient,
-      userId: person.userId
+      userId: person.userId,
+      specialties: person.specialties
     });
   }
 
@@ -85,7 +95,8 @@ export class PersonUpdateComponent implements OnInit {
       dateDeNaissance: this.editForm.get(['dateDeNaissance'])!.value,
       civilite: this.editForm.get(['civilite'])!.value,
       docteurOrPatient: this.editForm.get(['docteurOrPatient'])!.value,
-      userId: this.editForm.get(['userId'])!.value
+      userId: this.editForm.get(['userId'])!.value,
+      specialties: this.editForm.get(['specialties'])!.value
     };
   }
 
@@ -105,7 +116,18 @@ export class PersonUpdateComponent implements OnInit {
     this.isSaving = false;
   }
 
-  trackById(index: number, item: IUser): any {
+  trackById(index: number, item: SelectableEntity): any {
     return item.id;
+  }
+
+  getSelected(selectedVals: ISpecialty[], option: ISpecialty): ISpecialty {
+    if (selectedVals) {
+      for (let i = 0; i < selectedVals.length; i++) {
+        if (option.id === selectedVals[i].id) {
+          return selectedVals[i];
+        }
+      }
+    }
+    return option;
   }
 }

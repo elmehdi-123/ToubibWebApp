@@ -65,6 +65,15 @@ public class PersonService {
     }
 
     /**
+     * Get all the people with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    public Page<PersonDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return personRepository.findAllWithEagerRelationships(pageable).map(personMapper::toDto);
+    }
+
+    /**
      * Get one person by id.
      *
      * @param id the id of the entity.
@@ -73,7 +82,7 @@ public class PersonService {
     @Transactional(readOnly = true)
     public Optional<PersonDTO> findOne(Long id) {
         log.debug("Request to get Person : {}", id);
-        return personRepository.findById(id)
+        return personRepository.findOneWithEagerRelationships(id)
             .map(personMapper::toDto);
     }
 

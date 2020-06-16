@@ -83,6 +83,8 @@ public class PersonCriteria implements Serializable, Criteria {
 
     private LongFilter userId;
 
+    private LongFilter specialtyId;
+
     public PersonCriteria() {
     }
 
@@ -97,6 +99,7 @@ public class PersonCriteria implements Serializable, Criteria {
         this.docteurOrPatient = other.docteurOrPatient == null ? null : other.docteurOrPatient.copy();
         this.addressId = other.addressId == null ? null : other.addressId.copy();
         this.userId = other.userId == null ? null : other.userId.copy();
+        this.specialtyId = other.specialtyId == null ? null : other.specialtyId.copy();
     }
 
     @Override
@@ -184,6 +187,14 @@ public class PersonCriteria implements Serializable, Criteria {
         this.userId = userId;
     }
 
+    public LongFilter getSpecialtyId() {
+        return specialtyId;
+    }
+
+    public void setSpecialtyId(LongFilter specialtyId) {
+        this.specialtyId = specialtyId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -204,7 +215,8 @@ public class PersonCriteria implements Serializable, Criteria {
             Objects.equals(civilite, that.civilite) &&
             Objects.equals(docteurOrPatient, that.docteurOrPatient) &&
             Objects.equals(addressId, that.addressId) &&
-            Objects.equals(userId, that.userId);
+            Objects.equals(userId, that.userId) &&
+            Objects.equals(specialtyId, that.specialtyId);
     }
 
     @Override
@@ -219,7 +231,8 @@ public class PersonCriteria implements Serializable, Criteria {
         civilite,
         docteurOrPatient,
         addressId,
-        userId
+        userId,
+        specialtyId
         );
     }
 
@@ -236,6 +249,7 @@ public class PersonCriteria implements Serializable, Criteria {
                 (docteurOrPatient != null ? "docteurOrPatient=" + docteurOrPatient + ", " : "") +
                 (addressId != null ? "addressId=" + addressId + ", " : "") +
                 (userId != null ? "userId=" + userId + ", " : "") +
+                (specialtyId != null ? "specialtyId=" + specialtyId + ", " : "") +
             "}";
     }
 

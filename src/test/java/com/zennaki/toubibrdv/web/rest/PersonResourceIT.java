@@ -4,6 +4,7 @@ import com.zennaki.toubibrdv.ToubibRdvWebApp;
 import com.zennaki.toubibrdv.domain.Person;
 import com.zennaki.toubibrdv.domain.Address;
 import com.zennaki.toubibrdv.domain.User;
+import com.zennaki.toubibrdv.domain.Specialty;
 import com.zennaki.toubibrdv.repository.PersonRepository;
 import com.zennaki.toubibrdv.service.PersonService;
 import com.zennaki.toubibrdv.service.dto.PersonDTO;
@@ -13,9 +14,14 @@ import com.zennaki.toubibrdv.service.PersonQueryService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,10 +29,12 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -36,7 +44,7 @@ import com.zennaki.toubibrdv.domain.enumeration.DocteurOrPatientEnum;
  * Integration tests for the {@link PersonResource} REST controller.
  */
 @SpringBootTest(classes = ToubibRdvWebApp.class)
-
+@ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 @WithMockUser
 public class PersonResourceIT {
@@ -66,8 +74,14 @@ public class PersonResourceIT {
     @Autowired
     private PersonRepository personRepository;
 
+    @Mock
+    private PersonRepository personRepositoryMock;
+
     @Autowired
     private PersonMapper personMapper;
+
+    @Mock
+    private PersonService personServiceMock;
 
     @Autowired
     private PersonService personService;
@@ -235,6 +249,26 @@ public class PersonResourceIT {
             .andExpect(jsonPath("$.[*].docteurOrPatient").value(hasItem(DEFAULT_DOCTEUR_OR_PATIENT.toString())));
     }
     
+    @SuppressWarnings({"unchecked"})
+    public void getAllPeopleWithEagerRelationshipsIsEnabled() throws Exception {
+        when(personServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restPersonMockMvc.perform(get("/api/people?eagerload=true"))
+            .andExpect(status().isOk());
+
+        verify(personServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
+    @SuppressWarnings({"unchecked"})
+    public void getAllPeopleWithEagerRelationshipsIsNotEnabled() throws Exception {
+        when(personServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
+
+        restPersonMockMvc.perform(get("/api/people?eagerload=true"))
+            .andExpect(status().isOk());
+
+        verify(personServiceMock, times(1)).findAllWithEagerRelationships(any());
+    }
+
     @Test
     @Transactional
     public void getPerson() throws Exception {
@@ -829,6 +863,26 @@ public class PersonResourceIT {
 
         // Get all the personList where user equals to userId + 1
         defaultPersonShouldNotBeFound("userId.equals=" + (userId + 1));
+    }
+
+
+    @Test
+    @Transactional
+    public void getAllPeopleBySpecialtyIsEqualToSomething() throws Exception {
+        // Initialize the database
+        personRepository.saveAndFlush(person);
+        Specialty specialty = SpecialtyResourceIT.createEntity(em);
+        em.persist(specialty);
+        em.flush();
+        person.addSpecialty(specialty);
+        personRepository.saveAndFlush(person);
+        Long specialtyId = specialty.getId();
+
+        // Get all the personList where specialty equals to specialtyId
+        defaultPersonShouldBeFound("specialtyId.equals=" + specialtyId);
+
+        // Get all the personList where specialty equals to specialtyId + 1
+        defaultPersonShouldNotBeFound("specialtyId.equals=" + (specialtyId + 1));
     }
 
     /**

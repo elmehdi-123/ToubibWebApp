@@ -57,6 +57,12 @@ public class Person implements Serializable {
     @JoinColumn(name = "id")
     private User user;
 
+    @ManyToMany
+    @JoinTable(name = "person_specialty",
+               joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "specialty_id", referencedColumnName = "id"))
+    private Set<Specialty> specialties = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -193,6 +199,31 @@ public class Person implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Specialty> getSpecialties() {
+        return specialties;
+    }
+
+    public Person specialties(Set<Specialty> specialties) {
+        this.specialties = specialties;
+        return this;
+    }
+
+    public Person addSpecialty(Specialty specialty) {
+        this.specialties.add(specialty);
+        specialty.getPeople().add(this);
+        return this;
+    }
+
+    public Person removeSpecialty(Specialty specialty) {
+        this.specialties.remove(specialty);
+        specialty.getPeople().remove(this);
+        return this;
+    }
+
+    public void setSpecialties(Set<Specialty> specialties) {
+        this.specialties = specialties;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

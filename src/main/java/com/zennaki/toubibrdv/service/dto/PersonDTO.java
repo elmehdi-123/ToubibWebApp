@@ -2,6 +2,8 @@ package com.zennaki.toubibrdv.service.dto;
 
 import java.time.LocalDate;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 import com.zennaki.toubibrdv.domain.enumeration.TypeCivilite;
 import com.zennaki.toubibrdv.domain.enumeration.DocteurOrPatientEnum;
@@ -31,6 +33,7 @@ public class PersonDTO implements Serializable {
     private Long userId;
 
     private String userLogin;
+    private Set<SpecialtyDTO> specialties = new HashSet<>();
     
     public Long getId() {
         return id;
@@ -112,6 +115,14 @@ public class PersonDTO implements Serializable {
         this.userLogin = userLogin;
     }
 
+    public Set<SpecialtyDTO> getSpecialties() {
+        return specialties;
+    }
+
+    public void setSpecialties(Set<SpecialtyDTO> specialties) {
+        this.specialties = specialties;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -146,6 +157,7 @@ public class PersonDTO implements Serializable {
             ", docteurOrPatient='" + getDocteurOrPatient() + "'" +
             ", userId=" + getUserId() +
             ", userLogin='" + getUserLogin() + "'" +
+            ", specialties='" + getSpecialties() + "'" +
             "}";
     }
 }

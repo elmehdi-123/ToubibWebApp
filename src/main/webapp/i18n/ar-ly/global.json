@@ -9,6 +9,7 @@
         "main": "الكيانات",
         "address": "Address",
         "person": "Person",
+        "specialty": "Specialty",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

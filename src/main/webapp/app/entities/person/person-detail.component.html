@@ -40,6 +40,12 @@
                 <dd>
                     {{ person.userLogin }}
                 </dd>
+                <dt><span jhiTranslate="toubibRdvWebApp.person.specialty">Specialty</span></dt>
+                <dd>
+                    <span *ngFor="let specialty of person.specialties; let last = last">
+                        <a [routerLink]="['/specialty', specialty?.id, 'view']">{{ specialty.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -14,5 +14,17 @@
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
 
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="person_specialty"
+                                 constraintName="fk_person_specialty_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="specialty_id"
+                                 baseTableName="person_specialty"
+                                 constraintName="fk_person_specialty_specialty_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="specialty"/>
+        
     </changeSet>
 </databaseChangeLog>

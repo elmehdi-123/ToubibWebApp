@@ -16,6 +16,14 @@
             "ownerSide": true,
             "useJPADerivedIdentifier": true,
             "otherEntityRelationshipName": "person"
+        },
+        {
+            "relationshipName": "specialty",
+            "otherEntityName": "specialty",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "person"
         }
     ],
     "fields": [

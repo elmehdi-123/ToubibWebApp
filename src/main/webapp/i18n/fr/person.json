@@ -24,7 +24,8 @@
       "civilite": "Civilite",
       "docteurOrPatient": "Docteur Or Patient",
       "address": "Address",
-      "user": "User"
+      "user": "User",
+      "specialty": "Specialty"
     }
   }
 }

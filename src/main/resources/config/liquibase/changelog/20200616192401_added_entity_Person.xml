@@ -43,7 +43,23 @@
 
     <changeSet id="20200616192401-1-relations" author="jhipster">
 
+        <createTable tableName="person_specialty">
+            <column name="specialty_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="person_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="person_id, specialty_id" tableName="person_specialty"/>
+        <addForeignKeyConstraint baseColumnNames="person_id"
+                                 baseTableName="jhi_user"
+                                 constraintName="fk_user_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
     </changeSet>
+    
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 
     <!--

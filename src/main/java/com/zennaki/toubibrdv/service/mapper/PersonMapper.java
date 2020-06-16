@@ -9,7 +9,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Person} and its DTO {@link PersonDTO}.
  */
-@Mapper(componentModel = "spring", uses = {UserMapper.class})
+@Mapper(componentModel = "spring", uses = {UserMapper.class, SpecialtyMapper.class})
 public interface PersonMapper extends EntityMapper<PersonDTO, Person> {
 
     @Mapping(source = "user.id", target = "userId")
@@ -19,6 +19,7 @@ public interface PersonMapper extends EntityMapper<PersonDTO, Person> {
     @Mapping(target = "addresses", ignore = true)
     @Mapping(target = "removeAddress", ignore = true)
     @Mapping(source = "userId", target = "user")
+    @Mapping(target = "removeSpecialty", ignore = true)
     Person toEntity(PersonDTO personDTO);
 
     default Person fromId(Long id) {
