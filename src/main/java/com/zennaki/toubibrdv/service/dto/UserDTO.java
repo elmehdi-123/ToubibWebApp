@@ -3,6 +3,7 @@ package com.zennaki.toubibrdv.service.dto;
 import com.zennaki.toubibrdv.config.Constants;
 
 import com.zennaki.toubibrdv.domain.Authority;
+import com.zennaki.toubibrdv.domain.Person;
 import com.zennaki.toubibrdv.domain.User;
 
 import javax.validation.constraints.*;
@@ -49,6 +50,8 @@ public class UserDTO {
     private Instant lastModifiedDate;
 
     private Set<String> authorities;
+    
+    private Person person;
 
     public UserDTO() {
         // Empty constructor needed for Jackson.
@@ -70,6 +73,7 @@ public class UserDTO {
         this.authorities = user.getAuthorities().stream()
             .map(Authority::getName)
             .collect(Collectors.toSet());
+        this.person = user.getPerson();
     }
 
     public Long getId() {
@@ -175,8 +179,16 @@ public class UserDTO {
     public void setAuthorities(Set<String> authorities) {
         this.authorities = authorities;
     }
+    
+	public Person getPerson() {
+		return person;
+	}
 
-    @Override
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+
+	@Override
     public String toString() {
         return "UserDTO{" +
             "login='" + login + '\'' +
