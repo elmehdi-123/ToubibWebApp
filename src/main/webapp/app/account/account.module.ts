@@ -11,12 +11,14 @@ import { PasswordResetInitComponent } from './password-reset/init/password-reset
 import { PasswordResetFinishComponent } from './password-reset/finish/password-reset-finish.component';
 import { SettingsComponent } from './settings/settings.component';
 import { accountState } from './account.route';
+import { RegisterDocteurComponent } from './registerdocteur/registerdocteur.component';
 
 @NgModule({
   imports: [ToubibRdvWebAppSharedModule, RouterModule.forChild(accountState)],
   declarations: [
     ActivateComponent,
     RegisterComponent,
+    RegisterDocteurComponent,
     PasswordComponent,
     PasswordStrengthBarComponent,
     PasswordResetInitComponent,

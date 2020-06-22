@@ -20,7 +20,8 @@
         "sessions": "Sessions",
         "login": "Sign in",
         "logout": "Sign out",
-        "register": "Register"
+        "register": "Register",
+        "registerdoctor": "Are you a doctor, register"
       },
       "admin": {
         "main": "Administration",
