@@ -29,7 +29,7 @@ import java.util.Optional;
  * REST controller for managing {@link com.zennaki.toubibrdv.domain.Specialty}.
  */
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/fullapi")
 public class SpecialtyResource {
 
     private final Logger log = LoggerFactory.getLogger(SpecialtyResource.class);

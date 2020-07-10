@@ -3,6 +3,7 @@ package com.zennaki.toubibrdv.service;
 import com.google.common.base.Strings;
 import com.zennaki.toubibrdv.config.Constants;
 import com.zennaki.toubibrdv.domain.Authority;
+import com.zennaki.toubibrdv.domain.Person;
 import com.zennaki.toubibrdv.domain.User;
 import com.zennaki.toubibrdv.repository.AuthorityRepository;
 import com.zennaki.toubibrdv.repository.UserRepository;
@@ -114,6 +115,8 @@ public class UserService {
         Set<Authority> authorities = new HashSet<>();
         authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
         newUser.setAuthorities(authorities);
+        //Person person = userDTO.getPerson();
+        newUser.setPerson(userDTO.getPerson());
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
         return newUser;

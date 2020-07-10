@@ -11,7 +11,7 @@ type EntityArrayResponseType = HttpResponse<ISpecialty[]>;
 
 @Injectable({ providedIn: 'root' })
 export class SpecialtyService {
-  public resourceUrl = SERVER_API_URL + 'api/specialties';
+  public resourceUrl = SERVER_API_URL + 'fullapi/specialties';
 
   constructor(protected http: HttpClient) {}
 

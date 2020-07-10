@@ -146,7 +146,7 @@ jhipster:
   mail:
     from: ToubibRDVWebApp@localhost
   swagger:
-    default-include-pattern: /api/.*
+    default-include-pattern: /api/.*,/fullapi/.*
     title: ToubibRDVWebApp API
     description: ToubibRDVWebApp API documentation
     version: 0.0.1
