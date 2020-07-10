@@ -12,13 +12,11 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {UserMapper.class, SpecialtyMapper.class})
 public interface PersonMapper extends EntityMapper<PersonDTO, Person> {
 
-    @Mapping(source = "user.id", target = "userId")
-    @Mapping(source = "user.login", target = "userLogin")
+    
     PersonDTO toDto(Person person);
 
     @Mapping(target = "addresses", ignore = true)
     @Mapping(target = "removeAddress", ignore = true)
-    @Mapping(source = "userId", target = "user")
     @Mapping(target = "removeSpecialty", ignore = true)
     @Mapping(target = "appointments", ignore = true)
     @Mapping(target = "removeAppointment", ignore = true)

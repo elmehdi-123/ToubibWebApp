@@ -51,11 +51,7 @@ public class Person implements Serializable {
     @OneToMany(mappedBy = "person")
     private Set<Address> addresses = new HashSet<>();
 
-    @OneToOne
-
-    @MapsId
-    @JoinColumn(name = "id")
-    private User user;
+    
 
     @ManyToMany
     @JoinTable(name = "person_specialty",
@@ -192,19 +188,6 @@ public class Person implements Serializable {
 
     public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Person user(User user) {
-        this.user = user;
-        return this;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public Set<Specialty> getSpecialties() {

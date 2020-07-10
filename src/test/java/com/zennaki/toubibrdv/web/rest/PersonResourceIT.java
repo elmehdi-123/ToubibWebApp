@@ -117,7 +117,6 @@ public class PersonResourceIT {
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
         em.flush();
-        person.setUser(user);
         return person;
     }
     /**
@@ -139,7 +138,6 @@ public class PersonResourceIT {
         User user = UserResourceIT.createEntity(em);
         em.persist(user);
         em.flush();
-        person.setUser(user);
         return person;
     }
 
@@ -171,9 +169,6 @@ public class PersonResourceIT {
         assertThat(testPerson.getDateDeNaissance()).isEqualTo(DEFAULT_DATE_DE_NAISSANCE);
         assertThat(testPerson.getCivilite()).isEqualTo(DEFAULT_CIVILITE);
         assertThat(testPerson.getDocteurOrPatient()).isEqualTo(DEFAULT_DOCTEUR_OR_PATIENT);
-
-        // Validate the id for MapsId, the ids must be same
-        assertThat(testPerson.getId()).isEqualTo(testPerson.getUser().getId());
     }
 
     @Test
@@ -848,22 +843,6 @@ public class PersonResourceIT {
 
         // Get all the personList where address equals to addressId + 1
         defaultPersonShouldNotBeFound("addressId.equals=" + (addressId + 1));
-    }
-
-
-    @Test
-    @Transactional
-    public void getAllPeopleByUserIsEqualToSomething() throws Exception {
-        // Get already existing entity
-        User user = person.getUser();
-        personRepository.saveAndFlush(person);
-        Long userId = user.getId();
-
-        // Get all the personList where user equals to userId
-        defaultPersonShouldBeFound("userId.equals=" + userId);
-
-        // Get all the personList where user equals to userId + 1
-        defaultPersonShouldNotBeFound("userId.equals=" + (userId + 1));
     }
 
 

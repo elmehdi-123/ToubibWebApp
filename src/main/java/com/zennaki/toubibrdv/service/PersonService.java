@@ -45,8 +45,8 @@ public class PersonService {
     public PersonDTO save(PersonDTO personDTO) {
         log.debug("Request to save Person : {}", personDTO);
         Person person = personMapper.toEntity(personDTO);
-        long userId = personDTO.getUserId();
-        userRepository.findById(userId).ifPresent(person::user);
+        //long userId = personDTO.getUserId();
+        //userRepository.findById(userId).ifPresent(person::user);
         person = personRepository.save(person);
         return personMapper.toDto(person);
     }

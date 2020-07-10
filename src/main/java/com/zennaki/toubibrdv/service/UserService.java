@@ -1,5 +1,6 @@
 package com.zennaki.toubibrdv.service;
 
+import com.google.common.base.Strings;
 import com.zennaki.toubibrdv.config.Constants;
 import com.zennaki.toubibrdv.domain.Authority;
 import com.zennaki.toubibrdv.domain.User;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -255,6 +257,12 @@ public class UserService {
     @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthorities() {
     	  return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneWithAuthoritiesByLogin);
+    }
+    
+    @Transactional(readOnly = true)
+    public Optional<User> getUserWithLogin() {
+    	  Optional<String> userOpt = Optional.ofNullable(Strings.emptyToNull(SecurityContextHolder.getContext().getAuthentication().getName()));
+          return userOpt.flatMap(userRepository::findOneByLogin);
     }
 
     /**

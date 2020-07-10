@@ -1,3 +1,5 @@
+import { IPerson } from 'app/shared/model/person.model';
+
 export interface IUser {
   id?: any;
   login?: string;
@@ -12,6 +14,7 @@ export interface IUser {
   lastModifiedBy?: string;
   lastModifiedDate?: Date;
   password?: string;
+  person?: IPerson;
 }
 
 export class User implements IUser {
@@ -28,6 +31,8 @@ export class User implements IUser {
     public createdDate?: Date,
     public lastModifiedBy?: string,
     public lastModifiedDate?: Date,
-    public password?: string
+    public password?: string,
+    public person?: IPerson
+
   ) {}
 }
