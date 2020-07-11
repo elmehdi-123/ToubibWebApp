@@ -6,6 +6,8 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from 'app/shared/constants/error.constants';
 import { LoginModalService } from 'app/core/login/login-modal.service';
 import { RegisterService } from './register.service';
+import { DocteurOrPatientEnum } from 'app/shared/model/enumerations/docteur-or-patient-enum.model';
+import { Person } from 'app/shared/model/person.model';
 
 @Component({
   selector: 'jhi-register',
@@ -25,7 +27,12 @@ export class RegisterComponent implements AfterViewInit {
     login: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(50), Validators.pattern('^[_.@A-Za-z0-9-]*$')]],
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-    confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]]
+    confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
+    nom:  ['', [Validators.required]],
+    prenom:  ['', [Validators.required]],
+    numTele:  ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
+    dateDeNaissance: ['', [Validators.required]],
+    civilite: ['', [Validators.required]],
   });
 
   constructor(
@@ -53,7 +60,16 @@ export class RegisterComponent implements AfterViewInit {
     } else {
       const login = this.registerForm.get(['login'])!.value;
       const email = this.registerForm.get(['email'])!.value;
-      this.registerService.save({ login, email, password, langKey: this.languageService.getCurrentLanguage() }).subscribe(
+      const person = {...new Person(),
+        nom: this.registerForm.get(['nom'])!.value,
+        prenom: this.registerForm.get(['prenom'])!.value,
+        numTele: this.registerForm.get(['numTele'])!.value,
+        eMail: this.registerForm.get(['email'])!.value,
+        dateDeNaissance: this.registerForm.get(['dateDeNaissance'])!.value,
+        civilite: this.registerForm.get(['civilite'])!.value,
+        docteurOrPatient: DocteurOrPatientEnum.PATIENT,
+      };
+      this.registerService.save({ login, email, password, langKey: this.languageService.getCurrentLanguage(), person}).subscribe(
         () => (this.success = true),
         response => this.processError(response)
       );

@@ -10,6 +10,7 @@ import { Person } from 'app/shared/model/person.model';
 import { SpecialtyService } from 'app/entities/specialty/specialty.service';
 import { ISpecialty } from 'app/shared/model/specialty.model';
 import { IUser } from 'app/core/user/user.model';
+import { DocteurOrPatientEnum } from 'app/shared/model/enumerations/docteur-or-patient-enum.model';
 
 type SelectableEntity = IUser | ISpecialty;
 
@@ -35,16 +36,12 @@ export class RegisterDocteurComponent implements AfterViewInit {
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(50)]],
-    id: [],
-    nom: [],
-    prenom: [],
-    numTele: [],
-    eMail: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
-    dateDeNaissance: [],
-    civilite: [],
-    docteurOrPatient: [],
-    userId: [],
-    specialties: []
+    nom:  ['', [Validators.required]],
+    prenom:  ['', [Validators.required]],
+    numTele:  ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
+    dateDeNaissance: ['', [Validators.required]],
+    civilite: ['', [Validators.required]],
+    specialties: ['', [Validators.required]]
   });
 
   constructor(
@@ -79,10 +76,10 @@ export class RegisterDocteurComponent implements AfterViewInit {
         nom: this.registerForm.get(['nom'])!.value,
         prenom: this.registerForm.get(['prenom'])!.value,
         numTele: this.registerForm.get(['numTele'])!.value,
-        eMail: this.registerForm.get(['eMail'])!.value,
+        eMail: this.registerForm.get(['email'])!.value,
         dateDeNaissance: this.registerForm.get(['dateDeNaissance'])!.value,
         civilite: this.registerForm.get(['civilite'])!.value,
-        docteurOrPatient: this.registerForm.get(['docteurOrPatient'])!.value,
+        docteurOrPatient: DocteurOrPatientEnum.DOCTEUR,
         specialties: this.registerForm.get(['specialties'])!.value,
       };
       

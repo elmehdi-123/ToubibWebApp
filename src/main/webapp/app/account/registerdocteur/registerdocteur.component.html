@@ -147,14 +147,11 @@
                 </div>
 
                 
-                    <div class="form-group" [hidden]="!registerForm.get('id')!.value">
-                        <label for="id" jhiTranslate="global.field.id">ID</label>
-                        <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-                    </div>
+                   
     
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.nom" for="field_nom">Nom</label>
-                        <input type="text" class="form-control" name="nom" id="field_nom"
+                        <input type="text" class="form-control" name="nom" id="field_nom "
                                formControlName="nom"/>
                     </div>
     
@@ -170,11 +167,7 @@
                                formControlName="numTele"/>
                     </div>
     
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.eMail" for="field_eMail">E Mail</label>
-                        <input type="text" class="form-control" name="eMail" id="field_eMail"
-                               formControlName="eMail"/>
-                    </div>
+                    
     
                     <div class="form-group">
                         <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.dateDeNaissance" for="field_dateDeNaissance">Date De Naissance</label>
@@ -191,14 +184,6 @@
                         <select class="form-control" name="civilite" formControlName="civilite" id="field_civilite">
                             <option value="MADAME">{{ 'toubibRdvWebApp.TypeCivilite.MADAME' | translate }}</option>
                             <option value="MONSIEUR">{{ 'toubibRdvWebApp.TypeCivilite.MONSIEUR' | translate }}</option>
-                        </select>
-                    </div>
-    
-                    <div class="form-group">
-                        <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.docteurOrPatient" for="field_docteurOrPatient">Docteur Or Patient</label>
-                        <select class="form-control" name="docteurOrPatient" formControlName="docteurOrPatient" id="field_docteurOrPatient">
-                            <option value="DOCTEUR">{{ 'toubibRdvWebApp.DocteurOrPatientEnum.DOCTEUR' | translate }}</option>
-                            <option value="PATIENT">{{ 'toubibRdvWebApp.DocteurOrPatientEnum.PATIENT' | translate }}</option>
                         </select>
                     </div>
     

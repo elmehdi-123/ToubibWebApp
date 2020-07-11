@@ -5,6 +5,7 @@ import com.zennaki.toubibrdv.config.Constants;
 import com.zennaki.toubibrdv.domain.Authority;
 import com.zennaki.toubibrdv.domain.Person;
 import com.zennaki.toubibrdv.domain.User;
+import com.zennaki.toubibrdv.domain.enumeration.DocteurOrPatientEnum;
 import com.zennaki.toubibrdv.repository.AuthorityRepository;
 import com.zennaki.toubibrdv.repository.UserRepository;
 import com.zennaki.toubibrdv.security.AuthoritiesConstants;
@@ -113,7 +114,12 @@ public class UserService {
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         Set<Authority> authorities = new HashSet<>();
-        authorityRepository.findById(AuthoritiesConstants.USER).ifPresent(authorities::add);
+        if(userDTO.getPerson().getDocteurOrPatient().equals(DocteurOrPatientEnum.DOCTEUR))
+            authorityRepository.findById(AuthoritiesConstants.DOCTEUR).ifPresent(authorities::add);
+        else if(userDTO.getPerson().getDocteurOrPatient().equals(DocteurOrPatientEnum.PATIENT))
+            authorityRepository.findById(AuthoritiesConstants.PATIENT).ifPresent(authorities::add);
+
+        
         newUser.setAuthorities(authorities);
         //Person person = userDTO.getPerson();
         newUser.setPerson(userDTO.getPerson());
