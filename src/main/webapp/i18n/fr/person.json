@@ -27,7 +27,12 @@
       "user": "User",
       "specialty": "Specialty",
       "appointment": "Appointment",
-      "disponibilties": "Disponibilties"
+      "disponibilties": "Disponibilties",
+      "nom.placeholder": "Votre nom",
+      "prenom.placeholder": "Votre Prenom",
+      "numTele.placeholder": "Votre numero de téléphone",
+      "dateDeNaissance.placeholder": "Votre date de naissance",
+      "civilite.placeholder": "Votre civilite"
     }
   }
 }

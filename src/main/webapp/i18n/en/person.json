@@ -16,18 +16,23 @@
       "detail": {
         "title": "Person"
       },
-      "nom": "Nom",
-      "prenom": "Prenom",
+      "nom": "firstName",
+      "prenom": "lastName",
       "numTele": "Num Tele",
       "eMail": "E Mail",
-      "dateDeNaissance": "Date De Naissance",
-      "civilite": "Civilite",
-      "docteurOrPatient": "Docteur Or Patient",
+      "dateDeNaissance": "Date of Birth",
+      "civilite": "Civility",
+      "docteurOrPatient": "Doctor Or Patient",
       "address": "Address",
       "user": "User",
       "specialty": "Specialty",
       "appointment": "Appointment",
-      "disponibilties": "Disponibilties"
+      "disponibilties": "Disponibilties",
+      "nom.placeholder": "Votre nom",
+      "prenom.placeholder": "Votre Prenom",
+      "numTele.placeholder": "Votre numero de téléphone",
+      "dateDeNaissance.placeholder": "Votre date de naissance",
+      "civilite.placeholder": "Votre civilite"
     }
   }
 }

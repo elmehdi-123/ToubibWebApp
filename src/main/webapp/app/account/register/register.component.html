@@ -148,19 +148,19 @@
                 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.nom" for="field_nom">Nom</label>
-                    <input type="text" class="form-control" name="nom" id="field_nom "
+                    <input type="text" class="form-control" name="nom" id="field_nom " placeholder="{{ 'toubibRdvWebApp.person.nom.placeholder' | translate }}"
                            formControlName="nom"/>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.prenom" for="field_prenom">Prenom</label>
-                    <input type="text" class="form-control" name="prenom" id="field_prenom"
+                    <input type="text" class="form-control" name="prenom" id="field_prenom" placeholder="{{ 'toubibRdvWebApp.person.prenom.placeholder' | translate }}"
                            formControlName="prenom"/>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.numTele" for="field_numTele">Num Tele</label>
-                    <input type="text" class="form-control" name="numTele" id="field_numTele"
+                    <input type="text" class="form-control" name="numTele" id="field_numTele" placeholder="{{ 'toubibRdvWebApp.person.numTele.placeholder' | translate }}"
                            formControlName="numTele"/>
                 </div>
 
@@ -169,7 +169,7 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.dateDeNaissance" for="field_dateDeNaissance">Date De Naissance</label>
                     <div class="input-group">
-                        <input id="field_dateDeNaissance" type="text" class="form-control" name="dateDeNaissance" ngbDatepicker #dateDeNaissanceDp="ngbDatepicker" formControlName="dateDeNaissance"/>
+                        <input id="field_dateDeNaissance" type="text" class="form-control" name="dateDeNaissance" ngbDatepicker #dateDeNaissanceDp="ngbDatepicker" placeholder="{{ 'toubibRdvWebApp.person.dateDeNaissance.placeholder' | translate }}" formControlName="dateDeNaissance"/>
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="dateDeNaissanceDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
@@ -178,10 +178,41 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.person.civilite" for="field_civilite">Civilite</label>
-                    <select class="form-control" name="civilite" formControlName="civilite" id="field_civilite">
+                    <select class="form-control" name="civilite" formControlName="civilite" id="field_civilite" >
+                        <option value="" disabled selected>{{ 'toubibRdvWebApp.person.civilite.placeholder' | translate }}</option>
                         <option value="MADAME">{{ 'toubibRdvWebApp.TypeCivilite.MADAME' | translate }}</option>
                         <option value="MONSIEUR">{{ 'toubibRdvWebApp.TypeCivilite.MONSIEUR' | translate }}</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.nomRue" for="field_nomRue">Nom Rue</label>
+                    <input type="text" class="form-control" name="nomRue" id="field_nomRue"
+                           formControlName="nomRue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.ville" for="field_ville">Ville</label>
+                    <input type="text" class="form-control" name="ville" id="field_ville"
+                           formControlName="ville"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.commun" for="field_commun">Commun</label>
+                    <input type="text" class="form-control" name="commun" id="field_commun"
+                           formControlName="commun"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.codePostal" for="field_codePostal">Code Postal</label>
+                    <input type="text" class="form-control" name="codePostal" id="field_codePostal"
+                           formControlName="codePostal"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.willaya" for="field_willaya">Willaya</label>
+                    <input type="text" class="form-control" name="willaya" id="field_willaya"
+                           formControlName="willaya"/>
                 </div>
 
                 <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary" jhiTranslate="register.form.button">Register</button>

@@ -16,18 +16,23 @@
       "detail": {
         "title": "Person"
       },
-      "nom": "Nom",
-      "prenom": "Prenom",
-      "numTele": "Num Tele",
+      "nom": "الاسم",
+      "prenom": "اللقب",
+      "numTele": "رقم الهاتف",
       "eMail": "E Mail",
-      "dateDeNaissance": "Date De Naissance",
-      "civilite": "Civilite",
-      "docteurOrPatient": "Docteur Or Patient",
-      "address": "Address",
-      "user": "User",
-      "specialty": "Specialty",
-      "appointment": "Appointment",
-      "disponibilties": "Disponibilties"
+      "dateDeNaissance": "تالريخ الميلاد",
+      "civilite": "الجنس",
+      "docteurOrPatient": "طبيب او مريض",
+      "address": "عنوان",
+      "user": "المستخدم",
+      "specialty": "الاختصاص",
+      "appointment": "موعد",
+      "disponibilties": "اتاحة",
+      "nom.placeholder": "Votre nom",
+      "prenom.placeholder": "Votre Prenom",
+      "numTele.placeholder": "Votre numero de téléphone",
+      "dateDeNaissance.placeholder": "Votre date de naissance",
+      "civilite.placeholder": "Votre civilite"
     }
   }
 }

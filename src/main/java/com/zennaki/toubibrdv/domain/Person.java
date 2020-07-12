@@ -49,7 +49,7 @@ public class Person implements Serializable {
     @Column(name = "docteur_or_patient")
     private DocteurOrPatientEnum docteurOrPatient;
 
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Address> addresses = new HashSet<>();
 
     

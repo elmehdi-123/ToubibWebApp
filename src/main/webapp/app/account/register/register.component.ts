@@ -8,6 +8,7 @@ import { LoginModalService } from 'app/core/login/login-modal.service';
 import { RegisterService } from './register.service';
 import { DocteurOrPatientEnum } from 'app/shared/model/enumerations/docteur-or-patient-enum.model';
 import { Person } from 'app/shared/model/person.model';
+import { Address } from 'app/shared/model/address.model';
 
 @Component({
   selector: 'jhi-register',
@@ -33,6 +34,11 @@ export class RegisterComponent implements AfterViewInit {
     numTele:  ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     dateDeNaissance: ['', [Validators.required]],
     civilite: ['', [Validators.required]],
+    nomRue: ['', [Validators.required]],
+    ville: ['', [Validators.required]],
+    commun: ['', [Validators.required]],
+    codePostal: ['', [Validators.required]],
+    willaya: ['', [Validators.required]],
   });
 
   constructor(
@@ -60,6 +66,13 @@ export class RegisterComponent implements AfterViewInit {
     } else {
       const login = this.registerForm.get(['login'])!.value;
       const email = this.registerForm.get(['email'])!.value;
+      const address = {...new Address(),
+        nomRue: this.registerForm.get(['nomRue'])!.value,
+        ville: this.registerForm.get(['ville'])!.value,
+        commun: this.registerForm.get(['commun'])!.value,
+        codePostal: this.registerForm.get(['codePostal'])!.value,
+        willaya: this.registerForm.get(['willaya'])!.value,
+      }
       const person = {...new Person(),
         nom: this.registerForm.get(['nom'])!.value,
         prenom: this.registerForm.get(['prenom'])!.value,
@@ -68,6 +81,7 @@ export class RegisterComponent implements AfterViewInit {
         dateDeNaissance: this.registerForm.get(['dateDeNaissance'])!.value,
         civilite: this.registerForm.get(['civilite'])!.value,
         docteurOrPatient: DocteurOrPatientEnum.PATIENT,
+        addresses: [address]
       };
       this.registerService.save({ login, email, password, langKey: this.languageService.getCurrentLanguage(), person}).subscribe(
         () => (this.success = true),

@@ -35,7 +35,7 @@ public class Address implements Serializable {
     @Column(name = "willaya")
     private String willaya;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnoreProperties("addresses")
     private Person person;
 
