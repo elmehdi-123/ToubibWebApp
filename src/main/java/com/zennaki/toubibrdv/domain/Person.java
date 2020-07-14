@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.zennaki.toubibrdv.domain.enumeration.TypeCivilite;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.zennaki.toubibrdv.domain.enumeration.DocteurOrPatientEnum;
 
 /**
@@ -49,7 +49,8 @@ public class Person implements Serializable {
     @Column(name = "docteur_or_patient")
     private DocteurOrPatientEnum docteurOrPatient;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("person")
     private Set<Address> addresses = new HashSet<>();
 
     

@@ -2,10 +2,12 @@ package com.zennaki.toubibrdv.service;
 
 import com.google.common.base.Strings;
 import com.zennaki.toubibrdv.config.Constants;
+import com.zennaki.toubibrdv.domain.Address;
 import com.zennaki.toubibrdv.domain.Authority;
 import com.zennaki.toubibrdv.domain.Person;
 import com.zennaki.toubibrdv.domain.User;
 import com.zennaki.toubibrdv.domain.enumeration.DocteurOrPatientEnum;
+import com.zennaki.toubibrdv.repository.AddressRepository;
 import com.zennaki.toubibrdv.repository.AuthorityRepository;
 import com.zennaki.toubibrdv.repository.UserRepository;
 import com.zennaki.toubibrdv.security.AuthoritiesConstants;
@@ -39,15 +41,19 @@ public class UserService {
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
+    
+    private final AddressRepository addressRepository;
 
     private final PasswordEncoder passwordEncoder;
 
     private final AuthorityRepository authorityRepository;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder
+    		, AuthorityRepository authorityRepository, AddressRepository addressRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
+        this.addressRepository = addressRepository;
     }
 
     public Optional<User> activateRegistration(String key) {
@@ -123,7 +129,21 @@ public class UserService {
         newUser.setAuthorities(authorities);
         //Person person = userDTO.getPerson();
         newUser.setPerson(userDTO.getPerson());
-        userRepository.save(newUser);
+        newUser = userRepository.save(newUser);
+        // Create all address for the person 
+        if(userDTO.getPerson().getAddresses() != null) {
+        	Set<Address> addresses = new HashSet<>();
+        	for(Address ad : userDTO.getPerson().getAddresses()) {
+				
+				  Address address = new Address(); address.setNomRue(ad.getNomRue());
+				  address.setVille(ad.getVille()); address.setWillaya(ad.getWillaya());
+				  address.setCodePostal(ad.getCodePostal()); address.setCommun(ad.getCommun());
+				  address.setPerson(newUser.getPerson());
+				 
+        	addresses.add(address);
+        	}
+        	addressRepository.saveAll(addresses);
+        }
         log.debug("Created Information for User: {}", newUser);
         return newUser;
     }
