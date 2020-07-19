@@ -1,0 +1,46 @@
+<ng-container [formGroup]="addressForm">
+
+    <div class="row mb-3 pb-3">
+        <div class="offset-md-1 col-md-11">
+
+            <div class="container-hr" *ngIf="isMultiple">
+                <div class="line"></div>
+                <div class="text mat-typography">Bien n° {{index + 1}}</div>
+                <div class="line"></div>
+                <button *ngIf="index > 1" (click)="sendIndexOfRemovedAddress()"
+                        class="btn btn- ml-3"
+                ><fa-icon [icon]="'times'"></fa-icon></button>
+            </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.nomRue" for="field_nomRue">Nom Rue</label>
+                    <input type="text" class="form-control" name="nomRue-{{index}}" id="field_nomRue-{{index}}"
+                           formControlName="nomRue"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.ville" for="field_ville">Ville</label>
+                    <input type="text" class="form-control" name="ville-{{index}}" id="field_ville-{{index}}"
+                           formControlName="ville"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.commun" for="field_commun">Commun</label>
+                    <input type="text" class="form-control" name="commun-{{index}}" id="field_commun-{{index}}"
+                           formControlName="commun"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.codePostal" for="field_codePostal">Code Postal</label>
+                    <input type="text" class="form-control" name="codePostal-{{index}}" id="field_codePostal-{{index}}"
+                           formControlName="codePostal"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="toubibRdvWebApp.address.willaya" for="field_willaya">Willaya</label>
+                    <input type="text" class="form-control" name="willaya-{{index}}" id="field_willaya-{{index}}"
+                           formControlName="willaya"/>
+                </div>
+ </div>
+    </div>
+            </ng-container>

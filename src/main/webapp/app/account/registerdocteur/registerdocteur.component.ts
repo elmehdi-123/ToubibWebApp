@@ -11,6 +11,7 @@ import { SpecialtyService } from 'app/entities/specialty/specialty.service';
 import { ISpecialty } from 'app/shared/model/specialty.model';
 import { IUser } from 'app/core/user/user.model';
 import { DocteurOrPatientEnum } from 'app/shared/model/enumerations/docteur-or-patient-enum.model';
+import { Address } from 'app/shared/model/address.model';
 
 type SelectableEntity = IUser | ISpecialty;
 
@@ -41,7 +42,12 @@ export class RegisterDocteurComponent implements AfterViewInit {
     numTele:  ['', [Validators.required, Validators.minLength(4), Validators.maxLength(15)]],
     dateDeNaissance: ['', [Validators.required]],
     civilite: ['', [Validators.required]],
-    specialties: ['', [Validators.required]]
+    specialties: ['', [Validators.required]],
+    nomRue: ['', [Validators.required]],
+    ville: ['', [Validators.required]],
+    commun: ['', [Validators.required]],
+    codePostal: ['', [Validators.required]],
+    willaya: ['', [Validators.required]]
   });
 
   constructor(
@@ -72,6 +78,13 @@ export class RegisterDocteurComponent implements AfterViewInit {
     } else {
       const login = this.registerForm.get(['login'])!.value;
       const email = this.registerForm.get(['email'])!.value;
+      const address = {...new Address(),
+        nomRue: this.registerForm.get(['nomRue'])!.value,
+        ville: this.registerForm.get(['ville'])!.value,
+        commun: this.registerForm.get(['commun'])!.value,
+        codePostal: this.registerForm.get(['codePostal'])!.value,
+        willaya: this.registerForm.get(['willaya'])!.value,
+      }
       const person = {...new Person(),
         nom: this.registerForm.get(['nom'])!.value,
         prenom: this.registerForm.get(['prenom'])!.value,
@@ -81,6 +94,8 @@ export class RegisterDocteurComponent implements AfterViewInit {
         civilite: this.registerForm.get(['civilite'])!.value,
         docteurOrPatient: DocteurOrPatientEnum.DOCTEUR,
         specialties: this.registerForm.get(['specialties'])!.value,
+        addresses: [address]
+
       };
       
 
