@@ -55,16 +55,16 @@ public class Person implements Serializable {
 
     
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "person_specialty",
                joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
                inverseJoinColumns = @JoinColumn(name = "specialty_id", referencedColumnName = "id"))
     private Set<Specialty> specialties = new HashSet<>();
 
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Appointment> appointments = new HashSet<>();
 
-    @OneToMany(mappedBy = "docteur")
+    @OneToMany(mappedBy = "docteur", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Appointment> disponibilties = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

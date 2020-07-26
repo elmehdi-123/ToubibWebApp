@@ -14,6 +14,8 @@ public interface AppointmentMapper extends EntityMapper<AppointmentDTO, Appointm
 
     @Mapping(source = "person.id", target = "personId")
     @Mapping(source = "docteur.id", target = "docteurId")
+    @Mapping(source = "docteur", target = "docteur")
+    @Mapping(source = "person", target = "patient")
     AppointmentDTO toDto(Appointment appointment);
 
     @Mapping(source = "personId", target = "person")

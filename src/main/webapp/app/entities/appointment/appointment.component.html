@@ -22,29 +22,34 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                   <!-- <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>--> 
                     <th scope="col"  jhiSortBy="motif"><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="dateRdv"><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="personId"><span jhiTranslate="toubibRdvWebApp.appointment.person">Person</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="docteurId"><span jhiTranslate="toubibRdvWebApp.appointment.docteur">Docteur</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--<th *ngIf="account.person.docteurOrPatient == 'DOCTEUR'" scope="col"  jhiSortBy="personId"><span jhiTranslaete="toubibRdvWebApp.appointment.person">Person</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th *ngIf="account.person.docteurOrPatient == 'PATIENT'" scope="col"  jhiSortBy="docteurId"><span jhiTranslate="toubibRdvWebApp.appointment.docteur">Docteur</span> <fa-icon icon="sort"></fa-icon></th>-->
+                    <th scope="col"  jhiSortBy="docteurId"><span >Etat</span> <fa-icon icon="sort"></fa-icon></th>
+                   
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let appointment of appointments ;trackBy: trackId">
-                    <td><a [routerLink]="['/appointment', appointment.id, 'view']">{{ appointment.id }}</a></td>
+                    <!--<td><a [routerLink]="['/appointment', appointment.id, 'view']">{{ appointment.id }}</a></td>--> 
                     <td>{{ appointment.motif }}</td>
                     <td>{{ appointment.dateRdv | date:'mediumDate' }}</td>
-                    <td>
+                    <td *ngIf="appointment.personId != null" >Occupé</td>
+                    <td *ngIf="appointment.personId == null" >Libre</td>
+                    
+                   <!--<td *ngIf="account.person.docteurOrPatient == 'DOCTEUR'">
                         <div *ngIf="appointment.personId">
-                            <a [routerLink]="['/person', appointment.personId , 'view']" >{{ appointment.personId }}</a>
+                            <a [routerLink]="['/person', appointment.personId , 'view']" >{{ appointment.patient }}</a>
                         </div>
                     </td>
-                    <td>
+                    <td *ngIf="account.person.docteurOrPatient == 'PATIENT'">
                         <div *ngIf="appointment.docteurId">
-                            <a [routerLink]="['/person', appointment.docteurId , 'view']" >{{ appointment.docteurId }}</a>
+                            <a [routerLink]="['/person', appointment.docteurId , 'view']" >{{ appointment.docteur }}</a>
                         </div>
-                    </td>
+                    </td>--> 
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

@@ -27,11 +27,11 @@ public class Appointment implements Serializable {
     @Column(name = "date_rdv")
     private LocalDate dateRdv;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties("appointments")
     private Person person;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties("disponibilties")
     private Person docteur;
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
+// import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
@@ -10,6 +10,8 @@ import { IAppointment } from 'app/shared/model/appointment.model';
 import { ITEMS_PER_PAGE } from 'app/shared/constants/pagination.constants';
 import { AppointmentService } from './appointment.service';
 import { AppointmentDeleteDialogComponent } from './appointment-delete-dialog.component';
+import { AccountService } from 'app/core/auth/account.service';
+import { DocteurOrPatientEnum } from 'app/shared/model/enumerations/docteur-or-patient-enum.model';
 
 @Component({
   selector: 'jhi-appointment',
@@ -24,19 +26,22 @@ export class AppointmentComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   ngbPaginationPage = 1;
+  account: any;
 
   constructor(
     protected appointmentService: AppointmentService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected eventManager: JhiEventManager,
+    private accountService: AccountService,
     protected modalService: NgbModal
   ) {}
 
   loadPage(page?: number): void {
     const pageToLoad: number = page || this.page;
 
-    this.appointmentService
+    // To get ALL appointements 
+    /* this.appointmentService
       .query({
         page: pageToLoad - 1,
         size: this.itemsPerPage,
@@ -45,10 +50,16 @@ export class AppointmentComponent implements OnInit, OnDestroy {
       .subscribe(
         (res: HttpResponse<IAppointment[]>) => this.onSuccess(res.body, res.headers, pageToLoad),
         () => this.onError()
-      );
-  }
+      ); */
+
+      if(this.account.person.docteurOrPatient === DocteurOrPatientEnum.DOCTEUR)
+      this.onSuccess(this.account.person.disponibilties, pageToLoad);
+      if(this.account.person.docteurOrPatient === DocteurOrPatientEnum.PATIENT)
+      this.onSuccess(this.account.person.appointments, pageToLoad); 
+     }
 
   ngOnInit(): void {
+    this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
     this.activatedRoute.data.subscribe(data => {
       this.page = data.pagingParams.page;
       this.ascending = data.pagingParams.ascending;
@@ -87,8 +98,8 @@ export class AppointmentComponent implements OnInit, OnDestroy {
     return result;
   }
 
-  protected onSuccess(data: IAppointment[] | null, headers: HttpHeaders, page: number): void {
-    this.totalItems = Number(headers.get('X-Total-Count'));
+  protected onSuccess(data: IAppointment[] | null,page: number): void {
+    this.totalItems = Number(data?.length);
     this.page = page;
     this.router.navigate(['/appointment'], {
       queryParams: {

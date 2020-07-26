@@ -28,7 +28,7 @@ public class Specialty implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "specialties")
+    @ManyToMany(mappedBy = "specialties", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Person> people = new HashSet<>();
 

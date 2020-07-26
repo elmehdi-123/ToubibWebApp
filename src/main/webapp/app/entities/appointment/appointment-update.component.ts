@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -24,7 +25,8 @@ export class AppointmentUpdateComponent implements OnInit {
     motif: [],
     dateRdv: [],
     personId: [],
-    docteurId: []
+    docteurId: [],
+    patient:[]
   });
 
   constructor(
@@ -48,7 +50,8 @@ export class AppointmentUpdateComponent implements OnInit {
       motif: appointment.motif,
       dateRdv: appointment.dateRdv,
       personId: appointment.personId,
-      docteurId: appointment.docteurId
+      docteurId: appointment.docteurId,
+      patient: appointment.patient?.nom +" "+  appointment.patient?.prenom 
     });
   }
 

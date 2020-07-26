@@ -43,7 +43,7 @@ export const appointmentRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.USER, Authority.DOCTEUR, Authority.PATIENT],
       defaultSort: 'id,asc',
       pageTitle: 'toubibRdvWebApp.appointment.home.title'
     },
@@ -56,7 +56,7 @@ export const appointmentRoute: Routes = [
       appointment: AppointmentResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.USER, Authority.DOCTEUR, Authority.PATIENT],
       pageTitle: 'toubibRdvWebApp.appointment.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -68,7 +68,7 @@ export const appointmentRoute: Routes = [
       appointment: AppointmentResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.USER, Authority.DOCTEUR, Authority.PATIENT],
       pageTitle: 'toubibRdvWebApp.appointment.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -80,7 +80,7 @@ export const appointmentRoute: Routes = [
       appointment: AppointmentResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.USER, Authority.DOCTEUR, Authority.PATIENT],
       pageTitle: 'toubibRdvWebApp.appointment.home.title'
     },
     canActivate: [UserRouteAccessService]

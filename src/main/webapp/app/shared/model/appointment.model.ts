@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IPerson } from './person.model';
 
 export interface IAppointment {
   id?: number;
@@ -6,6 +7,8 @@ export interface IAppointment {
   dateRdv?: Moment;
   personId?: number;
   docteurId?: number;
+  patient?:IPerson;
+  docteur?:IPerson;
 }
 
 export class Appointment implements IAppointment {

@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.zennaki.toubibrdv.domain.Person;
+
 /**
  * A DTO for the {@link com.zennaki.toubibrdv.domain.Appointment} entity.
  */
@@ -19,6 +21,10 @@ public class AppointmentDTO implements Serializable {
     private Long personId;
 
     private Long docteurId;
+    
+    private Person docteur;
+    
+    private Person patient;
     
     public Long getId() {
         return id;
@@ -60,7 +66,23 @@ public class AppointmentDTO implements Serializable {
         this.docteurId = personId;
     }
 
-    @Override
+    public Person getDocteur() {
+		return docteur;
+	}
+
+	public void setDocteur(Person docteur) {
+		this.docteur = docteur;
+	}
+
+	public Person getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Person patient) {
+		this.patient = patient;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

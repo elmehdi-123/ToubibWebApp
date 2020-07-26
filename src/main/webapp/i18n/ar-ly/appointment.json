@@ -19,6 +19,7 @@
       "motif": "Motif",
       "dateRdv": "Date Rdv",
       "person": "Person",
+      "patient": "patient",
       "docteur": "Docteur"
     }
   }
