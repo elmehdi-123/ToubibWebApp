@@ -45,7 +45,9 @@
             <thead>
                    <!-- <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>--> 
                    <th scope="col"  ><span >Docteur</span> <fa-icon icon="sort"></fa-icon></th>
-                   <th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>
+                   <th scope="col"><span >Ville</span> <fa-icon icon="sort"></fa-icon></th>
+
+                   <!--<th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>-->
                     <th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
                     <!--<th *ngIf="account.person.docteurOrPatient == 'DOCTEUR'" scope="col"  jhiSortBy="personId"><span jhiTranslaete="toubibRdvWebApp.appointment.person">Person</span> <fa-icon icon="sort"></fa-icon></th>
                     <th *ngIf="account.person.docteurOrPatient == 'PATIENT'" scope="col"  jhiSortBy="docteurId"><span jhiTranslate="toubibRdvWebApp.appointment.docteur">Docteur</span> <fa-icon icon="sort"></fa-icon></th>-->
@@ -58,8 +60,9 @@
                 <tr *ngFor="let appointment of appointments ;trackBy: trackId">
                     <!--<td><a [routerLink]="['/appointment', appointment.id, 'view']">{{ appointment.id }}</a></td>--> 
                     <td>{{ appointment.docteur.nom}} {{ appointment.docteur.prenom}}</td>
-                    <td>{{ appointment.motif }}</td>
-                    <td>{{ appointment.dateRdv | date:'mediumDate' }}</td>
+                    <td  *ngIf="appointment.docteur != null">{{ appointment.docteur.addresses[0].ville }}</td>
+                    <!--<td>{{ appointment.motif }}</td>-->
+                    <td>{{ appointment.dateRdv | date:'dd/MM/yyyy à HH:mm ':'+0000':'fr' }}</td>
                     <td *ngIf="appointment.person != null">Occupé </td>
                     <td *ngIf="appointment.person == null">Libre </td>
                     

@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, LOCALE_ID } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
@@ -15,10 +15,14 @@ import { AccountService } from 'app/core/auth/account.service';
 import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 import { DatePipe } from '@angular/common';
+registerLocaleData(localeFr);
 
 @Component({
   selector: 'jhi-appointment-update',
-  templateUrl: './appointment-update.component.html'
+  templateUrl: './appointment-update.component.html',
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
+  ]
 })
 export class AppointmentUpdateComponent implements OnInit {
   isSaving = false;
@@ -27,7 +31,9 @@ export class AppointmentUpdateComponent implements OnInit {
   beginTime: any = { hour: 0, minute: 15};
   endTime : any = {hour: 0, minute: 15};
   account: any;
-  datePipe: DatePipe = new DatePipe('en-US');
+  datePipe: DatePipe = new DatePipe('fr');
+  appointmentSelected!: IAppointment;
+  selectedMoment:any;
 
 
   editForm = this.fb.group({
@@ -50,6 +56,7 @@ export class AppointmentUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
     this.activatedRoute.data.subscribe(({ appointment }) => {
+      this.appointmentSelected = appointment;
       this.updateForm(appointment);
 
       this.personService.query().subscribe((res: HttpResponse<IPerson[]>) => (this.people = res.body || []));
@@ -57,11 +64,14 @@ export class AppointmentUpdateComponent implements OnInit {
   }
 
   updateForm(appointment: IAppointment): void {
-    console.log(appointment.dateRdv ? this.datePipe.transform(appointment.dateRdv, 'short') : '')
+    
+    if(appointment.dateRdv)
+    this.selectedMoment = appointment.dateRdv.toDate();
+
     this.editForm.patchValue({
       id: appointment.id,
       motif: appointment.motif,
-      dateRdv: appointment.dateRdv ? this.datePipe.transform(appointment.dateRdv, 'short') : '',
+      dateRdv: appointment.dateRdv ? appointment.dateRdv.toDate(): '',
       personId: appointment.personId,
       docteurId: appointment.docteurId ? appointment.docteurId : this.account.person.id,
       patient: appointment.patient != null ? appointment.patient?.nom +" "+  appointment.patient?.prenom : null

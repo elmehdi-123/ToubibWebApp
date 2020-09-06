@@ -23,8 +23,13 @@
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                    <!-- <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>--> 
-                    <th scope="col"  jhiSortBy="motif"><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="dateRdv"><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--<th scope="col"  jhiSortBy="motif"><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>-->
+                    
+                    <th scope="col"><span >Docteur</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"><span >Ville</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"><span >Specialiste</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
+
                     <!--<th *ngIf="account.person.docteurOrPatient == 'DOCTEUR'" scope="col"  jhiSortBy="personId"><span jhiTranslaete="toubibRdvWebApp.appointment.person">Person</span> <fa-icon icon="sort"></fa-icon></th>
                     <th *ngIf="account.person.docteurOrPatient == 'PATIENT'" scope="col"  jhiSortBy="docteurId"><span jhiTranslate="toubibRdvWebApp.appointment.docteur">Docteur</span> <fa-icon icon="sort"></fa-icon></th>-->
                     <th *jhiHasAnyAuthority="'ROLE_DOCTEUR'" scope="col"  jhiSortBy="docteurId"><span >Etat</span> <fa-icon icon="sort"></fa-icon></th>
@@ -35,8 +40,11 @@
             <tbody>
                 <tr *ngFor="let appointment of appointments ;trackBy: trackId">
                     <!--<td><a [routerLink]="['/appointment', appointment.id, 'view']">{{ appointment.id }}</a></td>--> 
-                    <td>{{ appointment.motif }}</td>
-                    <td>{{ appointment.dateRdv | date:'mediumDate' }}</td>
+                    <!--<td>{{ appointment.motif }}</td>-->
+                    <td  *ngIf="appointment.docteur != null">{{ appointment.docteur.nom }} {{ appointment.docteur.prenom }} </td>
+                    <td  *ngIf="appointment.docteur != null">{{ appointment.docteur.addresses[0].ville }}</td>
+                    <td  *ngIf="appointment.docteur != null">{{ appointment.docteur.specialties[0].libelle }} </td>
+                    <td>{{ appointment.dateRdv | date:'dd/MM/yyyy à HH:mm ':'+0000':'fr'}}</td>
                     <ng-container *jhiHasAnyAuthority="'ROLE_DOCTEUR'">
                     <td  *ngIf="appointment.person != null">Occupé </td>
                     <td  *ngIf="appointment.person == null">Libre </td>
@@ -67,10 +75,15 @@
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
-                            <button type="submit" (click)="delete(appointment)"
+                            <button *jhiHasAnyAuthority="'ROLE_DOCTEUR'" type="submit" (click)="delete(appointment)"
                                     class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                            <button *jhiHasAnyAuthority="'ROLE_PATIENT'" (click)="annulerRdv(appointment)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" >Annuler</span>
                             </button>
                         </div>
                     </td>

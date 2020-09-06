@@ -12,12 +12,15 @@ import { AppointmentService } from './appointment.service';
 import { AppointmentDeleteDialogComponent } from './appointment-delete-dialog.component';
 import { AccountService } from 'app/core/auth/account.service';
 import { DocteurOrPatientEnum } from 'app/shared/model/enumerations/docteur-or-patient-enum.model';
+import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
 
 @Component({
   selector: 'jhi-appointment',
   templateUrl: './appointment.component.html'
 })
 export class AppointmentComponent implements OnInit, OnDestroy {
+  datePipe : DatePipe = new DatePipe('fr');
   appointments?: IAppointment[];
   eventSubscriber?: Subscription;
   totalItems = 0;
@@ -114,5 +117,13 @@ export class AppointmentComponent implements OnInit, OnDestroy {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page;
+  }
+
+  annulerRdv(appointment: any){
+    appointment.personId = undefined;
+    appointment.dateRdv = moment(appointment.dateRdv).utcOffset('+0000');
+    appointment.docteurId = appointment.docteur.id;
+    this.appointmentService.update(appointment).subscribe(res => console.log(res) );
+    location.reload();
   }
 }

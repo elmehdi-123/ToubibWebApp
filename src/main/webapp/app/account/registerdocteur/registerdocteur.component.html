@@ -187,7 +187,7 @@
     
                     <div class="form-group">
                         <label jhiTranslate="toubibRdvWebApp.person.specialty" for="field_specialties">Specialty</label>
-                        <select class="form-control" id="field_specialties" multiple name="specialties" formControlName="specialties">
+                        <select class="form-control" id="field_specialties" name="specialties" formControlName="specialties">
                             <option [ngValue]="getSelected(registerForm.get('specialties')!.value, specialtyOption)" *ngFor="let specialtyOption of specialties; trackBy: trackById">{{ specialtyOption.libelle }}</option>
                         </select>
                     </div>

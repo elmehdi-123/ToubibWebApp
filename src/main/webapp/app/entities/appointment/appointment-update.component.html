@@ -11,12 +11,11 @@
                     <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
                 </div>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.appointment.motif" for="field_motif">Motif</label>
                     <input type="text" class="form-control" name="motif" id="field_motif"
                            formControlName="motif"/>
-                </div>
-
+                </div>--->
                 <!--<div class="form-group">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.appointment.dateRdv" for="field_dateRdv">Date Rdv</label>
                     <div class="input-group">
@@ -29,11 +28,11 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.appointment.dateRdv" for="field_dateRdv">Date Rdv</label>
                     <div class="input-group">
-                        <input [owlDateTimeTrigger]="dateRdv" [owlDateTime]="dateRdv" id="field_dateRdv" type="text" class="form-control" name="dateRdv" formControlName="dateRdv"/>
+                        <input [(ngModel)]="selectedMoment" [owlDateTimeTrigger]="dateRdv" [owlDateTime]="dateRdv" id="field_dateRdv" type="text" class="form-control" name="dateRdv" formControlName="dateRdv"/>
                         <owl-date-time #dateRdv></owl-date-time>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" *ngIf="appointmentSelected.patient">
                     <label class="form-control-label" jhiTranslate="toubibRdvWebApp.appointment.person" for="field_person">Person</label>
                     <input readonly type="text" class="form-control" name="patient" id="field_patient"
                            formControlName="patient"/>
