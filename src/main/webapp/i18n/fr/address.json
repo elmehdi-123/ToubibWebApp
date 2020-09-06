@@ -16,12 +16,16 @@
       "detail": {
         "title": "Address"
       },
-      "nomRue": "Nom Rue",
+      "nomRue": "Rue",
       "ville": "Ville",
       "commun": "Commun",
       "codePostal": "Code Postal",
       "willaya": "Willaya",
-      "person": "Person"
+      "nomRue.placeholder": "Votre Rue",
+      "ville.placeholder": "Votre Ville",
+      "commun.placeholder": "Votre Commun",
+      "codePostal.placeholder": "Votre Code Postal",
+      "willaya.placeholder": "Votre Willaya"
     }
   }
 }

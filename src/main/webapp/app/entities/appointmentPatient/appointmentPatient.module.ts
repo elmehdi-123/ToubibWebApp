@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ToubibRdvWebAppSharedModule } from 'app/shared/shared.module';
-import { AppointmentComponent } from './appointment.component';
-import { AppointmentDetailComponent } from './appointment-detail.component';
-import { AppointmentUpdateComponent } from './appointment-update.component';
-import { AppointmentDeleteDialogComponent } from './appointment-delete-dialog.component';
-import { appointmentRoute } from './appointment.route';
+import { AppointmentComponent } from './appointmentPatient.component';
+import { AppointmentDetailComponent } from './appointmentPatient-detail.component';
+import { AppointmentUpdateComponent } from './appointmentPatient-update.component';
+import { AppointmentDeleteDialogComponent } from './appointmentPatient-delete-dialog.component';
+import { appointmentRoute } from './appointmentPatient.route';
 import { OwlDateTimeModule, OwlNativeDateTimeModule, OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 
 

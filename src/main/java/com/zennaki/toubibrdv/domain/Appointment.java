@@ -5,8 +5,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * A Appointment.
@@ -25,7 +28,7 @@ public class Appointment implements Serializable {
     private String motif;
 
     @Column(name = "date_rdv")
-    private LocalDate dateRdv;
+    private Date dateRdv;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties("appointments")
@@ -57,16 +60,16 @@ public class Appointment implements Serializable {
         this.motif = motif;
     }
 
-    public LocalDate getDateRdv() {
+    public Date getDateRdv() {
         return dateRdv;
     }
 
-    public Appointment dateRdv(LocalDate dateRdv) {
+    public Appointment dateRdv(Date dateRdv) {
         this.dateRdv = dateRdv;
         return this;
     }
 
-    public void setDateRdv(LocalDate dateRdv) {
+    public void setDateRdv(Date dateRdv) {
         this.dateRdv = dateRdv;
     }
 

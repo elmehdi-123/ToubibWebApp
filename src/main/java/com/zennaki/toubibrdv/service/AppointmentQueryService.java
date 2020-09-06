@@ -94,9 +94,9 @@ public class AppointmentQueryService extends QueryService<Appointment> {
             if (criteria.getMotif() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getMotif(), Appointment_.motif));
             }
-            if (criteria.getDateRdv() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getDateRdv(), Appointment_.dateRdv));
-            }
+          //  if (criteria.getDateRdv() != null) {
+           //    specification = specification.and(buildRangeSpecification(criteria.getDateRdv(), Appointment_.dateRdv));
+            //}
             if (criteria.getPersonId() != null) {
                 specification = specification.and(buildSpecification(criteria.getPersonId(),
                     root -> root.join(Appointment_.person, JoinType.LEFT).get(Person_.id)));

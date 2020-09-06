@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="toubibRdvWebApp.appointment.home.title">Appointments</span>
 
-        <button *jhiHasAnyAuthority="'ROLE_DOCTEUR'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-appointment" [routerLink]="['/appointment/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-appointment" [routerLink]="['/appointment/new']">
             <fa-icon icon="plus"></fa-icon>
             <span  jhiTranslate="toubibRdvWebApp.appointment.home.createLabel">
             Create a new Appointment
@@ -27,7 +27,7 @@
                     <th scope="col"  jhiSortBy="dateRdv"><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
                     <!--<th *ngIf="account.person.docteurOrPatient == 'DOCTEUR'" scope="col"  jhiSortBy="personId"><span jhiTranslaete="toubibRdvWebApp.appointment.person">Person</span> <fa-icon icon="sort"></fa-icon></th>
                     <th *ngIf="account.person.docteurOrPatient == 'PATIENT'" scope="col"  jhiSortBy="docteurId"><span jhiTranslate="toubibRdvWebApp.appointment.docteur">Docteur</span> <fa-icon icon="sort"></fa-icon></th>-->
-                    <th *jhiHasAnyAuthority="'ROLE_DOCTEUR'" scope="col"  jhiSortBy="docteurId"><span >Etat</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="docteurId"><span >Etat</span> <fa-icon icon="sort"></fa-icon></th>
                    
                     <th scope="col"></th>
                 </tr>
@@ -37,10 +37,9 @@
                     <!--<td><a [routerLink]="['/appointment', appointment.id, 'view']">{{ appointment.id }}</a></td>--> 
                     <td>{{ appointment.motif }}</td>
                     <td>{{ appointment.dateRdv | date:'mediumDate' }}</td>
-                    <ng-container *jhiHasAnyAuthority="'ROLE_DOCTEUR'">
-                    <td  *ngIf="appointment.person != null">Occupé </td>
-                    <td  *ngIf="appointment.person == null">Libre </td>
-                </ng-container>
+                    <td *ngIf="appointment.person != null">Occupé </td>
+                    <td *ngIf="appointment.person == null">Libre </td>
+                    
                    <!--<td *ngIf="account.person.docteurOrPatient == 'DOCTEUR'">
                         <div *ngIf="appointment.personId">
                             <a [routerLink]="['/person', appointment.personId , 'view']" >{{ appointment.patient }}</a>
@@ -60,7 +59,7 @@
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
 
-                            <button *jhiHasAnyAuthority="'ROLE_DOCTEUR'" type="submit"
+                            <button type="submit"
                                     [routerLink]="['/appointment', appointment.id, 'edit']"
                                     class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>

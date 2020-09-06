@@ -1,7 +1,11 @@
 package com.zennaki.toubibrdv.service.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
+import com.zennaki.toubibrdv.domain.Person;
 
 /**
  * A DTO for the {@link com.zennaki.toubibrdv.domain.Specialty} entity.
@@ -13,6 +17,8 @@ public class SpecialtyDTO implements Serializable {
     private String libelle;
 
     private String description;
+    
+    private Set<Person> people = new HashSet<>();
 
     
     public Long getId() {
@@ -38,8 +44,16 @@ public class SpecialtyDTO implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public Set<Person> getPeople() {
+		return people;
+	}
 
-    @Override
+	public void setPeople(Set<Person> people) {
+		this.people = people;
+	}
+
+	@Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;

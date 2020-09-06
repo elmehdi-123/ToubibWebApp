@@ -4,11 +4,13 @@
     </div>
 
     <div class="col-md-9">
-        <h1 class="display-4" jhiTranslate="home.title">Welcome, Java Hipster!</h1>
+        <h1 class="display-4" jhiTranslate="home.title">Welcome, Toubib RDV!</h1>
 
         <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
 
-        <div [ngSwitch]="isAuthenticated()">
+        <p class="lead" >Rechrercher un rendez-vous</p>
+
+       <!--<div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
                     [translateValues]="{ username: account.login }">You are logged in as user "{{ account.login }}".</span>
@@ -28,9 +30,86 @@
         <p jhiTranslate="home.question">
             If you have any question on JHipster:
         </p>
+    -->
+        <form [formGroup]="homeForm">
+        <div class="form-group">
+            <label jhiTranslate="toubibRdvWebApp.person.specialty" for="field_specialties">Specialty</label>
+            <select class="form-control" id="field_specialties" name="specialties" (change)="changeSpeciality()" formControlName="specialties">
+                <option [ngValue]=specialtyOption *ngFor="let specialtyOption of specialties; trackBy: trackById">{{ specialtyOption.libelle }}</option>
+            </select>
+        </div>
 
-       
+        
+    <div class="table-responsive" id="entities" *ngIf="appointments.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                   <!-- <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>--> 
+                   <th scope="col"  ><span >Docteur</span> <fa-icon icon="sort"></fa-icon></th>
+                   <th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
+                    <!--<th *ngIf="account.person.docteurOrPatient == 'DOCTEUR'" scope="col"  jhiSortBy="personId"><span jhiTranslaete="toubibRdvWebApp.appointment.person">Person</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th *ngIf="account.person.docteurOrPatient == 'PATIENT'" scope="col"  jhiSortBy="docteurId"><span jhiTranslate="toubibRdvWebApp.appointment.docteur">Docteur</span> <fa-icon icon="sort"></fa-icon></th>-->
+                    <th scope="col" ><span >Etat</span> <fa-icon icon="sort"></fa-icon></th>
+                   
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let appointment of appointments ;trackBy: trackId">
+                    <!--<td><a [routerLink]="['/appointment', appointment.id, 'view']">{{ appointment.id }}</a></td>--> 
+                    <td>{{ appointment.docteur.nom}} {{ appointment.docteur.prenom}}</td>
+                    <td>{{ appointment.motif }}</td>
+                    <td>{{ appointment.dateRdv | date:'mediumDate' }}</td>
+                    <td *ngIf="appointment.person != null">Occupé </td>
+                    <td *ngIf="appointment.person == null">Libre </td>
+                    
+                   <!--<td *ngIf="account.person.docteurOrPatient == 'DOCTEUR'">
+                        <div *ngIf="appointment.personId">
+                            <a [routerLink]="['/person', appointment.personId , 'view']" >{{ appointment.patient }}</a>
+                        </div>
+                    </td>
+                    <td *ngIf="account.person.docteurOrPatient == 'PATIENT'">
+                        <div *ngIf="appointment.docteurId">
+                            <a [routerLink]="['/person', appointment.docteurId , 'view']" >{{ appointment.docteur }}</a>
+                        </div>
+                    </td>--> 
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/appointment', appointment.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button (click)="reserverRdv(appointment)"
+                                    class="btn btn-info btn-sm" >
+                                    <fa-icon icon="pencil-alt"></fa-icon>
+                                    <span class="d-none d-md-inline" >Reserver</span>
+                            </button>
+
+                           <!-- <button type="submit"
+                                    [routerLink]="['/appointment', appointment.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(appointment)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>-->
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        
+    </form>
 
         
     </div>
+
 </div>

@@ -16,12 +16,22 @@
       "detail": {
         "title": "Address"
       },
-      "nomRue": "Nom Rue",
-      "ville": "Ville",
-      "commun": "Commun",
-      "codePostal": "Code Postal",
-      "willaya": "Willaya",
-      "person": "Person"
+      "nomRue": "Street name",
+      "ville": "Town",
+      "commun": "Common",
+      "codePostal": "Postal code",
+      "willaya": "Wilaya",
+      "disponibilties": "Disponibilties",
+      "nom.placeholder": "Your firstName",
+      "prenom.placeholder": "Your lastName",
+      "numTele.placeholder": "Your telephone number",
+      "dateDeNaissance.placeholder": "Your Date of Birth",
+      "civilite.placeholder": "Your Civility",
+      "nomRue.placeholder": "Name your street",
+      "ville.placeholder": "Your Town",
+      "commun.placeholder": "Your Common",
+      "codePostal.placeholder": "Your Postal code",
+      "willaya.placeholder": "Your Wilaya"
     }
   }
 }

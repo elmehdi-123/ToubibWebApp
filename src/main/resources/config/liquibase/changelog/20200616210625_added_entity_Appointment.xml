@@ -19,7 +19,7 @@
             <column name="motif" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="date_rdv" type="date">
+            <column name="date_rdv" type="datetime">
                 <constraints nullable="true" />
             </column>
             <column name="person_id" type="bigint">

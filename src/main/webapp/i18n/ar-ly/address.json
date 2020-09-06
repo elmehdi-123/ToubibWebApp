@@ -16,12 +16,16 @@
       "detail": {
         "title": "Address"
       },
-      "nomRue": "Nom Rue",
-      "ville": "Ville",
-      "commun": "Commun",
-      "codePostal": "Code Postal",
-      "willaya": "Willaya",
-      "person": "Person"
+      "nomRue": "الشارع",
+      "ville": "المدينة",
+      "commun": "مشترك",
+      "codePostal": "الرقم البريدي",
+      "willaya": "الولاية",
+      "nomRue.placeholder": "ادخل الشارع الخاص بك",
+      "ville.placeholder": "ادخل المدينة الخاصة بك",
+      "commun.placeholder": "ادخل المدينة الخاص بك",
+      "codePostal.placeholder": "ادخل المدينة الخاص بك",
+      "willaya.placeholder": "ادخل الولاية الخاصة بك"
     }
   }
 }

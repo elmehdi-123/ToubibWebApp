@@ -7,6 +7,7 @@ import io.github.jhipster.service.filter.BooleanFilter;
 import io.github.jhipster.service.filter.DoubleFilter;
 import io.github.jhipster.service.filter.Filter;
 import io.github.jhipster.service.filter.FloatFilter;
+import io.github.jhipster.service.filter.InstantFilter;
 import io.github.jhipster.service.filter.IntegerFilter;
 import io.github.jhipster.service.filter.LongFilter;
 import io.github.jhipster.service.filter.StringFilter;
@@ -29,7 +30,7 @@ public class AppointmentCriteria implements Serializable, Criteria {
 
     private StringFilter motif;
 
-    private LocalDateFilter dateRdv;
+   // private DateFilter dateRdv;
 
     private LongFilter personId;
 
@@ -41,7 +42,7 @@ public class AppointmentCriteria implements Serializable, Criteria {
     public AppointmentCriteria(AppointmentCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.motif = other.motif == null ? null : other.motif.copy();
-        this.dateRdv = other.dateRdv == null ? null : other.dateRdv.copy();
+        //this.dateRdv = other.dateRdv == null ? null : other.dateRdv.copy();
         this.personId = other.personId == null ? null : other.personId.copy();
         this.docteurId = other.docteurId == null ? null : other.docteurId.copy();
     }
@@ -67,13 +68,11 @@ public class AppointmentCriteria implements Serializable, Criteria {
         this.motif = motif;
     }
 
-    public LocalDateFilter getDateRdv() {
-        return dateRdv;
-    }
-
-    public void setDateRdv(LocalDateFilter dateRdv) {
-        this.dateRdv = dateRdv;
-    }
+	/*
+	 * public LocalDateFilter getDateRdv() { return dateRdv; }
+	 * 
+	 * public void setDateRdv(LocalDateFilter dateRdv) { this.dateRdv = dateRdv; }
+	 */
 
     public LongFilter getPersonId() {
         return personId;
@@ -104,7 +103,7 @@ public class AppointmentCriteria implements Serializable, Criteria {
         return
             Objects.equals(id, that.id) &&
             Objects.equals(motif, that.motif) &&
-            Objects.equals(dateRdv, that.dateRdv) &&
+           // Objects.equals(dateRdv, that.dateRdv) &&
             Objects.equals(personId, that.personId) &&
             Objects.equals(docteurId, that.docteurId);
     }
@@ -114,7 +113,7 @@ public class AppointmentCriteria implements Serializable, Criteria {
         return Objects.hash(
         id,
         motif,
-        dateRdv,
+       // dateRdv,
         personId,
         docteurId
         );
@@ -125,7 +124,7 @@ public class AppointmentCriteria implements Serializable, Criteria {
         return "AppointmentCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
                 (motif != null ? "motif=" + motif + ", " : "") +
-                (dateRdv != null ? "dateRdv=" + dateRdv + ", " : "") +
+                //(dateRdv != null ? "dateRdv=" + dateRdv + ", " : "") +
                 (personId != null ? "personId=" + personId + ", " : "") +
                 (docteurId != null ? "docteurId=" + docteurId + ", " : "") +
             "}";

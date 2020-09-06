@@ -2,25 +2,25 @@
   "toubibRdvWebApp": {
     "appointment": {
       "home": {
-        "title": "Appointments",
-        "createLabel": "Create a new Appointment",
-        "createOrEditLabel": "Create or edit a Appointment",
-        "notFound": "No Appointments found"
+        "title": "المواعيد",
+        "createLabel": "تحديد موعد",
+        "createOrEditLabel": "تحديد او تغير موعد",
+        "notFound": "لا يوجد مواعيد"
       },
       "created": "A new Appointment is created with identifier {{ param }}",
       "updated": "A Appointment is updated with identifier {{ param }}",
       "deleted": "A Appointment is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Appointment {{ id }}?"
+        "question": " ؟{{ id }} هل انت متاكد انك تريد محو هذا الموعد"
       },
       "detail": {
-        "title": "Appointment"
+        "title": "المواعيد"
       },
-      "motif": "Motif",
-      "dateRdv": "Date Rdv",
-      "person": "Person",
-      "patient": "patient",
-      "docteur": "Docteur"
+      "motif": "الدافع",
+      "dateRdv": "تاريخ الموعد",
+      "person": "الشخص",
+      "patient": "المريض",
+      "docteur": "الطبيب"
     }
   }
 }

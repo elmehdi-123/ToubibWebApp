@@ -14,6 +14,10 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
+import { OwlDateTimeModule,  OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   imports: [
@@ -23,7 +27,10 @@ import { ErrorComponent } from './layouts/error/error.component';
     ToubibRdvWebAppHomeModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     ToubibRdvWebAppEntityModule,
-    ToubibRdvWebAppAppRoutingModule
+    ToubibRdvWebAppAppRoutingModule,
+    OwlDateTimeModule, 
+    BrowserAnimationsModule,
+    OwlNativeDateTimeModule
   ],
   declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
   bootstrap: [MainComponent]

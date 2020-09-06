@@ -20,6 +20,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
+
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
@@ -42,7 +44,7 @@ public class AppointmentResourceIT {
     private static final String UPDATED_MOTIF = "BBBBBBBBBB";
 
     private static final LocalDate DEFAULT_DATE_RDV = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_DATE_RDV = LocalDate.now(ZoneId.systemDefault());
+    private static final LocalDate UPDATED_DATE_RDV = LocalDate.now();
     private static final LocalDate SMALLER_DATE_RDV = LocalDate.ofEpochDay(-1L);
 
     @Autowired
@@ -73,8 +75,8 @@ public class AppointmentResourceIT {
      */
     public static Appointment createEntity(EntityManager em) {
         Appointment appointment = new Appointment()
-            .motif(DEFAULT_MOTIF)
-            .dateRdv(DEFAULT_DATE_RDV);
+            .motif(DEFAULT_MOTIF);
+           // .dateRdv(DEFAULT_DATE_RDV);
         return appointment;
     }
     /**
@@ -85,8 +87,8 @@ public class AppointmentResourceIT {
      */
     public static Appointment createUpdatedEntity(EntityManager em) {
         Appointment appointment = new Appointment()
-            .motif(UPDATED_MOTIF)
-            .dateRdv(UPDATED_DATE_RDV);
+            .motif(UPDATED_MOTIF);
+            //.dateRdv(UPDATED_DATE_RDV);
         return appointment;
     }
 
@@ -465,8 +467,8 @@ public class AppointmentResourceIT {
         // Disconnect from session so that the updates on updatedAppointment are not directly saved in db
         em.detach(updatedAppointment);
         updatedAppointment
-            .motif(UPDATED_MOTIF)
-            .dateRdv(UPDATED_DATE_RDV);
+            .motif(UPDATED_MOTIF);
+            //.dateRdv(UPDATED_DATE_RDV);
         AppointmentDTO appointmentDTO = appointmentMapper.toDto(updatedAppointment);
 
         restAppointmentMockMvc.perform(put("/api/appointments")

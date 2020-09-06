@@ -28,11 +28,11 @@
       "specialty": "الاختصاص",
       "appointment": "موعد",
       "disponibilties": "اتاحة",
-      "nom.placeholder": "Votre nom",
-      "prenom.placeholder": "Votre Prenom",
-      "numTele.placeholder": "Votre numero de téléphone",
-      "dateDeNaissance.placeholder": "Votre date de naissance",
-      "civilite.placeholder": "Votre civilite"
+      "nom.placeholder": "ادخل اسمك",
+      "prenom.placeholder": "ادخل لقبك",
+      "numTele.placeholder": "ادخل رقم هاتفك",
+      "dateDeNaissance.placeholder": "ادخل تاريخ ملادك",
+      "civilite.placeholder": "ادخل الجنس الخاص بك"
     }
   }
 }

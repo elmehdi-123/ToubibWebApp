@@ -1,7 +1,10 @@
 package com.zennaki.toubibrdv.service.dto;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 import com.zennaki.toubibrdv.domain.Person;
@@ -15,7 +18,7 @@ public class AppointmentDTO implements Serializable {
 
     private String motif;
 
-    private LocalDate dateRdv;
+    private Date dateRdv;
 
 
     private Long personId;
@@ -42,11 +45,11 @@ public class AppointmentDTO implements Serializable {
         this.motif = motif;
     }
 
-    public LocalDate getDateRdv() {
+    public Date getDateRdv() {
         return dateRdv;
     }
 
-    public void setDateRdv(LocalDate dateRdv) {
+    public void setDateRdv(Date dateRdv) {
         this.dateRdv = dateRdv;
     }
 

@@ -13,7 +13,7 @@ type EntityResponseType = HttpResponse<IAppointment>;
 type EntityArrayResponseType = HttpResponse<IAppointment[]>;
 
 @Injectable({ providedIn: 'root' })
-export class AppointmentService {
+export class AppointmentPatientService {
   public resourceUrl = SERVER_API_URL + 'api/appointments';
 
   constructor(protected http: HttpClient) {}

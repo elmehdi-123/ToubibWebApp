@@ -68,7 +68,6 @@ export class AppointmentComponent implements OnInit, OnDestroy {
       this.loadPage();
     });
     this.registerChangeInAppointments();
-    console.log(this.account)
   }
 
   ngOnDestroy(): void {
