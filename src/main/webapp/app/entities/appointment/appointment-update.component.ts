@@ -64,10 +64,9 @@ export class AppointmentUpdateComponent implements OnInit {
   }
 
   updateForm(appointment: IAppointment): void {
-    
-    if(appointment.dateRdv)
+    if(appointment.dateRdv){
     this.selectedMoment = appointment.dateRdv.toDate();
-
+    }
     this.editForm.patchValue({
       id: appointment.id,
       motif: appointment.motif,

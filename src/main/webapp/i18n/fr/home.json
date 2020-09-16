@@ -2,6 +2,7 @@
   "home": {
     "title": "Bienvenue, Toubib RDV !",
     "subtitle": "Ceci est votre page d'accueil",
+    "rechercher":"Rechrercher un rendez-vous",
     "logged": {
       "message": "Vous êtes connecté en tant que \"{{username}}\"."
     },

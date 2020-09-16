@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" >
     <div class="col-md-3">
         <span class="hipster img-fluid rounded"></span>
     </div>
@@ -8,7 +8,7 @@
 
         <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
 
-        <p class="lead" >Rechrercher un rendez-vous</p>
+        <p class="display" jhiTranslate="home.rechercher">Rechrercher un rendez-vous</p>
 
        <!--<div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
@@ -39,6 +39,9 @@
             </select>
         </div>
 
+        <div class="alert alert-warning" id="no-result" *ngIf="appointments?.length === 0 && selectedValSpeciality">
+            <span jhiTranslate="toubibRdvWebApp.appointment.home.notFound">No appointments found</span>
+        </div>
         
     <div class="table-responsive" id="entities" *ngIf="appointments.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
@@ -46,6 +49,7 @@
                    <!-- <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>--> 
                    <th scope="col"  ><span >Docteur</span> <fa-icon icon="sort"></fa-icon></th>
                    <th scope="col"><span >Ville</span> <fa-icon icon="sort"></fa-icon></th>
+                   <th scope="col"><span >Address</Address></span> <fa-icon icon="sort"></fa-icon></th>
 
                    <!--<th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>-->
                     <th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
@@ -61,6 +65,7 @@
                     <!--<td><a [routerLink]="['/appointment', appointment.id, 'view']">{{ appointment.id }}</a></td>--> 
                     <td>{{ appointment.docteur.nom}} {{ appointment.docteur.prenom}}</td>
                     <td  *ngIf="appointment.docteur != null">{{ appointment.docteur.addresses[0].ville }}</td>
+                    <td  *ngIf="appointment.docteur != null">{{ appointment.docteur.addresses[0].nomRue }}</td>
                     <!--<td>{{ appointment.motif }}</td>-->
                     <td>{{ appointment.dateRdv | date:'dd/MM/yyyy à HH:mm ':'+0000':'fr' }}</td>
                     <td *ngIf="appointment.person != null">Occupé </td>

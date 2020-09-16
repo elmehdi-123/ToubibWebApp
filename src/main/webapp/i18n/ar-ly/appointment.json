@@ -7,9 +7,9 @@
         "createOrEditLabel": "تحديد او تغير موعد",
         "notFound": "لا يوجد مواعيد"
       },
-      "created": "A new Appointment is created with identifier {{ param }}",
-      "updated": "A Appointment is updated with identifier {{ param }}",
-      "deleted": "A Appointment is deleted with identifier {{ param }}",
+      "created": " {{ param }} يتم إنشاء موعد جديد بمعرف",
+      "updated": "{{ param }} يتم تحديث الموعد بالمعرف",
+      "deleted": "{{ param }} يتم حذف الموعد بالمعرف",
       "delete": {
         "question": " ؟{{ id }} هل انت متاكد انك تريد محو هذا الموعد"
       },
@@ -20,6 +20,9 @@
       "dateRdv": "تاريخ الموعد",
       "person": "الشخص",
       "patient": "المريض",
+      "ville":"مدينة",
+      "speci":"تخصص",
+      "etat":"حالة",
       "docteur": "الطبيب"
     }
   }

@@ -20,6 +20,9 @@
       "dateRdv": "Res date",
       "person": "Person",
       "patient": "patient",
+      "ville":"City",
+      "speci":"specialty",
+      "etat":"status",
       "docteur": "Doctor"
     }
   }

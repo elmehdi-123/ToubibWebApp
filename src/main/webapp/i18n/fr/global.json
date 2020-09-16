@@ -9,8 +9,8 @@
         "main": "Entités",
         "address": "Address",
         "person": "Person",
-        "specialty": "Specialty",
-        "appointment": "Appointment",
+        "specialty": "Spécialité",
+        "appointment": "Rendez-vous",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -104,6 +104,7 @@
       "delete": "Supprimer",
       "open": "Ouvrir",
       "save": "Sauvegarder",
+      "annuler":"Annuler",
       "view": "Voir"
     },
     "detail": {

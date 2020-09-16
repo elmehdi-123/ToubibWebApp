@@ -38,6 +38,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   predicate!: string;
   ascending!: boolean;
   datePipe: DatePipe = new DatePipe('fr-FR');
+  selectedValSpeciality: any = false;
+  
 
 
   homeForm = this.fb.group({
@@ -73,9 +75,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getSelected(selectedVal: ISpecialty, option: ISpecialty): ISpecialty {
 
+    this.appointments = [];
     if (selectedVal && selectedVal.people) {
+      this.selectedValSpeciality = true;
       for (let i = 0; i < selectedVal.people.length; i++) {
-        console.log(selectedVal.people[i])
       this.appointments?.push.apply(selectedVal.people[i].appointments);
       }
     }
@@ -84,6 +87,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   changeSpeciality(){
 
+    this.appointments = [];
+    this.selectedValSpeciality = true;
     for (let i = 0; i < this.homeForm.get('specialties')!.value.people.length; i++) {
       for (let j = 0; j < this.homeForm.get('specialties')!.value.people[i].disponibilties.length; j++) {
         if(this.homeForm.get('specialties')!.value.people[i].disponibilties[j].person == null)

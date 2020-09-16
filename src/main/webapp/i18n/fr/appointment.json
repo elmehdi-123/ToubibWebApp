@@ -2,24 +2,27 @@
   "toubibRdvWebApp": {
     "appointment": {
       "home": {
-        "title": "Appointments",
-        "createLabel": "Créer un nouveau Appointment",
-        "createOrEditLabel": "Créer ou éditer un Appointment",
+        "title": "Rendez-vous",
+        "createLabel": "Créer un nouveau Rendez-vous",
+        "createOrEditLabel": "Créer ou éditer un Rendez-vous",
         "notFound": "Aucun Appointment trouvé"
       },
-      "created": "Un nouveau Appointment a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Appointment avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Appointment avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouveau Rendez-vous a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Rendez-vous avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Rendez-vous avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Etes-vous certain de vouloir supprimer le Appointment {{ id }} ?"
+        "question": "Etes-vous certain de vouloir supprimer le Rendez-vous {{ id }} ?"
       },
       "detail": {
-        "title": "Appointment"
+        "title": "Rendez-vous"
       },
       "motif": "Motif",
       "dateRdv": "Date Rdv",
       "person": "Person",
       "patient": "patient",
+      "ville":"Ville",
+      "speci":"Spécialité",
+      "etat":"Etat",
       "docteur": "Docteur"
     }
   }

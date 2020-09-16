@@ -25,14 +25,14 @@
                    <!-- <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>--> 
                     <!--<th scope="col"  jhiSortBy="motif"><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>-->
                     
-                    <th scope="col"><span >Docteur</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"><span >Ville</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"><span >Specialiste</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"><span jhiTranslate="toubibRdvWebApp.appointment.docteur">Docteur</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"><span jhiTranslate="toubibRdvWebApp.appointment.ville">Ville</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"><span jhiTranslate="toubibRdvWebApp.appointment.speci">Specialiste</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
 
                     <!--<th *ngIf="account.person.docteurOrPatient == 'DOCTEUR'" scope="col"  jhiSortBy="personId"><span jhiTranslaete="toubibRdvWebApp.appointment.person">Person</span> <fa-icon icon="sort"></fa-icon></th>
                     <th *ngIf="account.person.docteurOrPatient == 'PATIENT'" scope="col"  jhiSortBy="docteurId"><span jhiTranslate="toubibRdvWebApp.appointment.docteur">Docteur</span> <fa-icon icon="sort"></fa-icon></th>-->
-                    <th *jhiHasAnyAuthority="'ROLE_DOCTEUR'" scope="col"  jhiSortBy="docteurId"><span >Etat</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th *jhiHasAnyAuthority="'ROLE_DOCTEUR'" scope="col"  jhiSortBy="docteurId"><span jhiTranslate="toubibRdvWebApp.appointment.etat">Etat</span> <fa-icon icon="sort"></fa-icon></th>
                    
                     <th scope="col"></th>
                 </tr>
@@ -83,7 +83,7 @@
                             <button *jhiHasAnyAuthority="'ROLE_PATIENT'" (click)="annulerRdv(appointment)"
                                     class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline" >Annuler</span>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.annuler">Annuler</span>
                             </button>
                         </div>
                     </td>

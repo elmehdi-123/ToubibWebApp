@@ -104,6 +104,7 @@
       "edit": "Edit",
       "open": "Open",
       "save": "Save",
+      "annuler":"cancel",
       "view": "View"
     },
     "detail": {
