@@ -93,7 +93,7 @@ export class RegisterDocteurComponent implements AfterViewInit {
         dateDeNaissance: this.registerForm.get(['dateDeNaissance'])!.value,
         civilite: this.registerForm.get(['civilite'])!.value,
         docteurOrPatient: DocteurOrPatientEnum.DOCTEUR,
-        specialties: this.registerForm.get(['specialties'])!.value,
+        specialties: [this.registerForm.get(['specialties'])!.value],
         addresses: [address]
 
       };
