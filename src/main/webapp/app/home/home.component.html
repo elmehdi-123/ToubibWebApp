@@ -46,10 +46,11 @@
     <div class="table-responsive" id="entities" *ngIf="appointments.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
+               <tr>
                    <!-- <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>--> 
                    <th scope="col"  ><span >Docteur</span> <fa-icon icon="sort"></fa-icon></th>
                    <th scope="col"><span >Ville</span> <fa-icon icon="sort"></fa-icon></th>
-                   <th scope="col"><span >Address</Address></span> <fa-icon icon="sort"></fa-icon></th>
+                   <th scope="col"><span >Address</span> <fa-icon icon="sort"></fa-icon></th>
 
                    <!--<th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.motif">Motif</span> <fa-icon icon="sort"></fa-icon></th>-->
                     <th scope="col"  ><span jhiTranslate="toubibRdvWebApp.appointment.dateRdv">Date Rdv</span> <fa-icon icon="sort"></fa-icon></th>
@@ -90,7 +91,7 @@
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
 
-                            <button (click)="reserverRdv(appointment)"
+                            <button *jhiHasAnyAuthority="'ROLE_PATIENT'" (click)="reserverRdv(appointment)"
                                     class="btn btn-info btn-sm" >
                                     <fa-icon icon="pencil-alt"></fa-icon>
                                     <span class="d-none d-md-inline" >Reserver</span>

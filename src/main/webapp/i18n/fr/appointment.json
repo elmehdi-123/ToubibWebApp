@@ -5,7 +5,7 @@
         "title": "Rendez-vous",
         "createLabel": "Créer un nouveau Rendez-vous",
         "createOrEditLabel": "Créer ou éditer un Rendez-vous",
-        "notFound": "Aucun Appointment trouvé"
+        "notFound": "Aucun rendez-vous trouvé"
       },
       "created": "Un nouveau Rendez-vous a été créé avec l'identifiant {{ param }}",
       "updated": "Le Rendez-vous avec l'identifiant {{ param }} a été mis à jour",
